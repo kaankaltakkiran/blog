@@ -10,7 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
+        <li class="nav-item">
+          <a class="nav-link  <?=($activePage == 'index') ? 'active' : '';?>" href="index.php">Home</a>
+        </li>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,11 +41,11 @@
        <ul class="navbar-nav">
        <li class="nav-item dropdown">
           <a class="nav-link text-danger  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Hello! <?php echo $_SESSION['adsoyad'] ?>
+          Hello! <?php echo $_SESSION['userName'] ?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Yazı Ekle</a></li>
+            <li><a class="dropdown-item  <?=($activePage == 'blogAdd') ? 'active' : '';?>" href="blog.add.php">Yazı Ekle</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
           </ul>

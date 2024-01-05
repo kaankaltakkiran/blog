@@ -64,7 +64,7 @@ if (isset($_POST['form_email'])) {
                 //return true;
                 @session_start();
                 $_SESSION['isLogin'] = 1; // Kullanıcı giriş yapmışsa 1 yap
-                $_SESSION['adsoyad'] = $CEVAP[0]['username']; // Kullanıcının adını al
+                $_SESSION['userName'] = $CEVAP[0]['username']; // Kullanıcının adını al
                 $_SESSION['id'] = $CEVAP[0]['userid']; // Kullanıcının ID'sini al
                 $_SESSION['rol'] = $CEVAP[0]['role']; // Kullanıcının ROL'ünü al
                 header("location: index.php");
@@ -72,11 +72,11 @@ if (isset($_POST['form_email'])) {
             } else {
                 //return false;
                 //!Şifreler Eşleşmiyorsa
-                $errors[] = "INCORRECT EMAIL or PASSWORD MATCH!...";
+                $errors[] = "INCORRECT EMAIL OR PASSWORD MATCH!...";
             }
         } else {
             //! Kullanıcı yoksa
-            $errors[] = "INCORRECT EMAIL or PASSWORD!...";
+            $errors[] = "INCORRECT EMAIL OR PASSWORD!...";
         }
     }
 
