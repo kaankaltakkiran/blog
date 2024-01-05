@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,6 +21,9 @@
         <div class="col-6">
       <h1 class='alert alert-primary mt-3 text-center'>Bloguma Hoşgeldiniz!</h1>
       </div>
+      <?php
+echo $_SESSION['isLogin'];
+?>
       </div>
 <!--     Header End -->
 <!--     Carousel Start -->

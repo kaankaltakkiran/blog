@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <nav class="navbar navbar-expand-lg  bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">My Blog</a>
@@ -9,6 +12,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Türler
@@ -31,7 +35,14 @@
             <li><a class="dropdown-item" href="#">Yazar3</a></li>
           </ul>
         </li>
+        <?php if ($_SESSION['isLogin'] == 1) {?>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Logout</a>
+        </li>
+        <?php }?>
       </ul>
+
+
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search Blog" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
