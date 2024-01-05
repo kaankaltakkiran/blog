@@ -87,7 +87,7 @@ if (isset($_POST['form_email'])) {
   <div class="col-6">
 
 <form method="POST">
-<h1 class="alert alert-info text-center">Login</h1>
+<h1 class="alert alert-info text-center">Admin Login Page</h1>
 <?php
 //! Hata mesajlarını göster
 if (!empty($errors)) {

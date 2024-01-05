@@ -16,7 +16,7 @@
     <div class="container">
     <?php if ($_SESSION['isLogin'] == 0) {?>
     <h3 class="text-center text-danger mt-3">Normalde sayfada olmayacak kısımlar</h3>
-     <p class="text-center"> <a href="admin.php" class="btn btn-primary">Admin Login Ekranı</a></p>
+     <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login Ekranı</a></p>
 
      <p class="text-center"> <a href="yazı.php" class="btn btn-primary">Yazı Ekleme Sayfası</a></p>
      <?php }?>
