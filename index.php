@@ -68,17 +68,8 @@
         <div class="row g-3 mt-4 ">
         <h1 class='text-center text-danger '>Yayınlanan Bloglar</h1>
           <div class="col-7 border ">
-         <div class="row">
-         <div class="col-4  ">
-          <img src="./blog.jpg" class="card-img-top">
-         </div>
-         <div class="col-8">
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque asperiores amet voluptatum sed provident dignissimos placeat vitae fuga possimus molestias alias tempora, ipsum velit nulla saepe a exercitationem illo cum!</p>
-         <a href="#" class="btn btn-primary">Devamını Oku</a>
-         </div>
-         </div>
          <div class="row mt-3 ">
-         <div class="col-4  ">
+         <div class="col-4">
           <img src="./blog2 .jpg" class="card-img-top">
          </div>
          <div class="col-8">
@@ -87,7 +78,7 @@
          </div>
          </div>
          <div class="row mt-3 mb-2  ">
-         <div class="col-4  ">
+         <div class="col-4">
           <img src="./blog3.jpg" class="card-img-top">
          </div>
          <div class="col-8">
@@ -108,19 +99,12 @@
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+
 
 </ul>
             </div>
             <div class="col-6">
             <ul class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>
             <a href="#" class="list-group-item list-group-item-action">A second link item</a>

@@ -17,21 +17,22 @@
   <input type="text"  class="form-control">
   <label>Yazıyı Ekleyen</label>
 </div>
-<div class="form-check mb-3">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
-    Public
-  </label>
+<div class="form-floating mb-3">
+  <input type="text"  class="form-control">
+  <label>Başlık</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="date">
+  <input type="text"  class="form-control">
+  <label>Kısa Özet</label>
 </div>
 <div class="form-floating mb-3">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <input type="text"  class="form-control">
+  <label>Yayın Tarihi</label>
+</div>
+<div class="form-floating mb-3">
+  <textarea class="form-control" id="floatingTextarea"></textarea>
   <label for="floatingTextarea">İçerik</label>
 </div>
-
-
                   <button type="submit" name="submit" class="btn btn-primary">Ekle</button>
      </form>
      </div>
