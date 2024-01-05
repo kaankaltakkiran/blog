@@ -21,6 +21,7 @@
       </div>
 <!--     Header End -->
 <!--     Carousel Start -->
+<h2 class="text-center  text-danger ">Popüler Bloglar</h2>
       <div class="row justify-content-center ">
         <div class="col-6">
         <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
