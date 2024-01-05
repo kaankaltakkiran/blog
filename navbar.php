@@ -12,7 +12,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
         </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Türler
@@ -36,13 +35,26 @@
           </ul>
         </li>
         <?php if ($_SESSION['isLogin'] == 1) {?>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Yazarlar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Yazı Ekle</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+          </ul>
         </li>
         <?php }?>
       </ul>
-
-
+      <?php if ($_SESSION['isLogin'] == 1) {?>
+       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link disabled text-danger "  href="#">Hello! <?php echo $_SESSION['adsoyad'] ?></a>
+        </li>
+      </ul>
+      <?php }?>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search Blog" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
