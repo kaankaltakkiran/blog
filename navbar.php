@@ -34,10 +34,12 @@
             <li><a class="dropdown-item" href="#">Yazar3</a></li>
           </ul>
         </li>
-        <?php if ($_SESSION['isLogin'] == 1) {?>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Yazarlar
+      </ul>
+      <?php if ($_SESSION['isLogin'] == 1) {?>
+       <ul class="navbar-nav">
+       <li class="nav-item dropdown">
+          <a class="nav-link text-danger  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Hello! <?php echo $_SESSION['adsoyad'] ?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -45,13 +47,6 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
           </ul>
-        </li>
-        <?php }?>
-      </ul>
-      <?php if ($_SESSION['isLogin'] == 1) {?>
-       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link disabled text-danger "  href="#">Hello! <?php echo $_SESSION['adsoyad'] ?></a>
         </li>
       </ul>
       <?php }?>

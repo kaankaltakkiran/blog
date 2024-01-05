@@ -115,6 +115,32 @@ if (!empty($errors)) {
      </form>
      </div>
 </div>
+<div class="row justify-content-end ">
+  <div class="col-6 ">
+  <h3 class="text-center text-info">User İnformation</h3>
+<table class="table  table-striped">
+  <thead>
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>admin@gmail.com</td>
+      <td>admin</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>kaan_fb_aslan@hotmail.com</td>
+      <td>123</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="hideShow.js"></script>
