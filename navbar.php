@@ -14,26 +14,51 @@
           <a class="nav-link  <?=($activePage == 'index') ? 'active' : '';?>" href="index.php">Home</a>
         </li>
         </li>
+        <?php
+require_once 'db.php';
+$sql = "SELECT * FROM categories";
+$SORGU = $DB->prepare($sql);
+$SORGU->execute();
+$categories = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+
+/* var_dump($categories);
+die(); */
+
+$Categories = "";
+foreach ($categories as $category) {
+    $Categories .= "<a class='dropdown-item' href='index.php?kategori={$category["categoryid"]}'>{$category["categoryname"]}</a>";
+}
+
+?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Türler
+          Categoryies
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Tür1</a></li>
-            <li><a class="dropdown-item" href="#">Tür2</a></li>
-            <li><a class="dropdown-item" href="#">Tür3</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Genel</a></li>
+          <?php echo $Categories; ?>
           </ul>
         </li>
+        <?php
+require_once 'db.php';
+$sql = "SELECT * FROM users";
+$SORGU = $DB->prepare($sql);
+$SORGU->execute();
+$users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+
+/* var_dump($categories);
+die(); */
+
+$kaans = "";
+foreach ($users as $user) {
+    $kaans .= "<a class='dropdown-item' href='index.php?user={$user["userid"]}'>{$user["username"]}</a>";
+}
+?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Yazarlar
+          Writers
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Yazar1</a></li>
-            <li><a class="dropdown-item" href="#">Yazar2</a></li>
-            <li><a class="dropdown-item" href="#">Yazar3</a></li>
+          <?php echo $kaans; ?>
           </ul>
         </li>
       </ul>
