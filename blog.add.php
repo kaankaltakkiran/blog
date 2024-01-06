@@ -2,6 +2,64 @@
 @session_start();
 $activePage = "blogAdd";
 ?>
+<?php
+if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
+    require_once 'db.php';
+    //!Form elemanları
+    $writerId = $_SESSION['id'];
+    $title = $_POST['form_title'];
+    $categoryId = $_POST['form_category'];
+    $summary = $_POST['form_summary'];
+    $blogDate = $_POST['form_date'];
+
+    $content = $_POST['form_content'];
+
+    //!Resim yükleme
+    $img_name = $_FILES['form_image']['name'];
+    $img_size = $_FILES['form_image']['size'];
+    $tmp_name = $_FILES['form_image']['tmp_name'];
+    $error = $_FILES['form_image']['error'];
+    // Hata kontrolü
+    $errors = array();
+
+    if ($error === 0) {
+        if ($img_size > 5242880) {
+            $errors[] = "Sorry, your file is too large.";
+        } else {
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
+            //! Resim türü kontrolü
+            $allowed_exs = array("jpg", "jpeg", "png");
+
+            if (in_array($img_ex_lc, $allowed_exs)) {
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = 'images/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                // Insert into Database
+                $sql = "INSERT INTO blogs (writerid, title,categoryid,summary,blogdate,content,blogimage) VALUES (:id, :form_title,:form_category,:form_summary,:form_date,:form_content,'$new_img_name')";
+                $SORGU = $DB->prepare($sql);
+
+                $SORGU->bindParam(':id', $writerId);
+                $SORGU->bindParam(':form_title', $title);
+                $SORGU->bindParam(':form_category', $categoryId);
+                $SORGU->bindParam(':form_summary', $summary);
+                $SORGU->bindParam(':form_date', $blogDate);
+                $SORGU->bindParam(':form_content', $content);
+
+                $SORGU->execute();
+                $approves[] = "Blog Added...";
+            } else {
+                $errors[] = "You can't upload files of this type";
+            }
+        }
+    } else {
+        /*     $errors[] = "unknown error occurred!"; */
+        $errors[] = "Image Not Selected";
+    }
+
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,34 +74,97 @@ $activePage = "blogAdd";
   <div class="row justify-content-center mt-3">
   <div class="col-6">
 
-<form method="POST">
-<h1 class="alert alert-success text-center">Yazı Ekleme Formu</h1>
+<form method="POST"enctype="multipart/form-data">
+<h1 class="alert alert-info text-center">Yazı Ekleme Formu</h1>
+<?php
+//! Hata mesajlarını göster
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo '
+        <div class="container">
+    <div class="auto-close alert mt-3 text-center alert-danger" role="alert">
+    ' . $error . '
+    </div>
+    </div>
+    ';
+    }
+}
+?>
+<?php
+//! Başarılı mesajlarını göster
+if (!empty($approves)) {
+    foreach ($approves as $approve) {
+        echo '
+        <div class="container">
+    <div class="auto-close alert mt-3 text-center alert-success" role="alert">
+    ' . $approve . '
+    </div>
+    </div>
+    ';
+    }
+}
+?>
+
   <div class="form-floating mb-3">
   <input type="text"  class="form-control" value="<?php echo $_SESSION['userName'] ?>"disabled readonly>
   <label>Yazıyı Ekleyen</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="text" name="form_title"  class="form-control">
+  <input type="text" name="form_title"  class="form-control"required>
   <label>Başlık</label>
 </div>
+<?php
+require_once 'db.php';
+$sql = "SELECT * FROM categories";
+$SORGU = $DB->prepare($sql);
+$SORGU->execute();
+$categories = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+
+/* var_dump($categories);
+die(); */
+
+$optionCategories = "";
+foreach ($categories as $category) {
+    $optionCategories = $optionCategories . "<option value='{$category['categoryid']}'>{$category['categoryname']}</option>";
+}
+
+?>
 <div class="form-floating mb-3">
-  <input type="text" name="form_summary"  class="form-control">
+<select class="form-select" name="form_category"required>
+<option disabled selected value="">Select Category</option>
+      <?php echo $optionCategories; ?>
+    </select>
+</div>
+<div class="form-floating mb-3">
+  <input type="text" name="form_summary"  class="form-control"required>
   <label>Kısa Özet</label>
 </div>
-<div class="form-floating mb-3">
-  <input type="text" name="form_date"  class="form-control">
+<!-- <div class="form-floating mb-3">
+  <input type="text" name="form_date"  class="form-control"required>
   <label>Yayın Tarihi</label>
-</div>
+</div> -->
 <div class="form-floating mb-3">
-  <textarea class="form-control" name="form_content" id="floatingTextarea"></textarea>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Publish Date</label>
+  <input type="date" name="form_date" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+</div>
+
+</div>
+
+<div class="form-floating mb-3">
+  <textarea class="form-control" name="form_content" id="floatingTextarea"required></textarea>
   <label for="floatingTextarea">İçerik</label>
 </div>
-                  <button type="submit" name="submit" class="btn btn-primary">Ekle</button>
+<div class="form-floating mb-3">
+    <input type='file' name='form_image'required>
+</div>
+                  <button type="submit" name="submit" class="btn btn-primary mb-3">Add Blog</button>
      </form>
      </div>
 </div>
 
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./autoCloseAlert.js"></script>
   </body>
 </html>

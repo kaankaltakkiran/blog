@@ -20,8 +20,18 @@ $activePage = "index";
      <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login Ekranı</a></p>
 
      <?php }?>
+    <!--  Yazı ekleme sayfasına giriş yapan kullanıcının idsini yollama -->
+     <?php
+require_once 'db.php';
+$sql = "SELECT * FROM users WHERE userid = :idUser";
+$id = $_SESSION['id'];
+$SORGU = $DB->prepare($sql);
+$SORGU->bindParam(':idUser', $id);
+$SORGU->execute();
+$users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+?>
      <?php if ($_SESSION['isLogin'] == 1) {?>
-      <p class="text-center mt-3"> <a href="blog.add.php" class="btn btn-primary">Yazı Ekleme Sayfası</a></p>
+      <p class="text-center mt-3"> <a href="blog.add.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Yazı Ekleme Sayfası</a></p>
       <?php }?>
       <div class="row justify-content-center ">
         <div class="col-6">
