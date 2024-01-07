@@ -18,6 +18,11 @@ $SORGU->execute();
 $categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($users);
 die(); */
+// Kontrol: Eğer kayıt yoksa hata sayfasına yönlendir
+if (empty($categoryies)) {
+    header("Location: category.error.php");
+    exit();
+}
 ?>
   <!doctype html>
   <html lang="en">
