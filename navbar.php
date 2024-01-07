@@ -48,9 +48,9 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* var_dump($categories);
 die(); */
 
-$kaans = "";
+$Users = "";
 foreach ($users as $user) {
-    $kaans .= "<a class='dropdown-item' href='index.php?user={$user["userid"]}'>{$user["username"]}</a>";
+    $Users .= "<a class='dropdown-item' href='index.php?user={$user["userid"]}'>{$user["username"]}</a>";
 }
 ?>
         <li class="nav-item dropdown">
@@ -58,7 +58,7 @@ foreach ($users as $user) {
           Writers
           </a>
           <ul class="dropdown-menu">
-          <?php echo $kaans; ?>
+          <?php echo $Users; ?>
           </ul>
         </li>
       </ul>
