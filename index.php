@@ -7,7 +7,7 @@ $activePage = "index";
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Bootstrap demo</title>
+      <title>My Blog</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
     <body>
@@ -114,9 +114,9 @@ foreach ($blogs as $blog) {
           <div class='col-8'>
           <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['blogdate']}</span></h3>
           <p>{$blog['summary']}</p>
-          <a href='#' class='btn btn-primary'>Devamını Oku</a>
+          <a href='' class='btn btn-primary'>Devamını Oku</a>
           <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
-          <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
+          <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
           <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
       </div>

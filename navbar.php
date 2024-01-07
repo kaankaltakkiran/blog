@@ -58,7 +58,7 @@ die(); */
 $Users = "";
 foreach ($users as $user) {
     $isActive = ($activeWriterID == $user["userid"]) ? 'active' : '';
-    $Users .= "<a class='dropdown-item {$isActive}' href='blog.show.php?writerid={$user["userid"]}'>{$user["username"]}</a>";
+    $Users .= "<a class='dropdown-item {$isActive}' href='blog.writer.php?writerid={$user["userid"]}'>{$user["username"]}</a>";
 
 }
 ?>
