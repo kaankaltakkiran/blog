@@ -24,40 +24,39 @@
     <?php
 
 require_once 'db.php';
-$id = $_GET["writerid"];
-
+$id = $_GET["categoryid"];
 /* SELECT blogs.*,users.*
 FROM users
 INNER JOIN blogs
-ON blogs.writerid=users.userid WHERE users.userid=:writerid */
+ON blogs.writerid=users.userid WHERE blogs.categoryid=:categoryid */
 $SORGU = $DB->prepare("SELECT blogs.*, users.*, categories.*
 FROM users
 INNER JOIN blogs ON blogs.writerid = users.userid
-INNER JOIN categories ON blogs.categoryid = categories.categoryid WHERE users.userid=:writerid");
-$SORGU->bindParam(':writerid', $id);
+INNER JOIN categories ON blogs.categoryid = categories.categoryid where blogs.categoryid=:categoryid");
+$SORGU->bindParam(':categoryid', $id);
 $SORGU->execute();
-$blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
-/* echo '<pre>'; print_r($blogs);
+$categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+/* echo '<pre>'; print_r($users);
 die(); */
-foreach ($blogs as $blog) {
+foreach ($categoryies as $category) {
     echo "
    <div class='col-6'>
    <div class='card mb-4 shadow-sm'>
-     <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
+     <img class='card-img-top' src='images/{$category['blogimage']}' height='400' width='100%'  />
      <div class='card-body'>
        <p class='card-text'>
-         <h3>{$blog['title']}</h3>
-         <p>{$blog['summary']}</p>
+         <h3>{$category['title']}</h3>
+         <p>{$category['summary']}</p>
        </p>
        <div class='d-flex justify-content-between align-items-center'>
          <div class='btn-group'>
-         <a class='btn btn-sm btn-outline-secondary' href='index.php?writerid={$blog["userid"]}'>Devamını Oku...</a>
+         <a class='btn btn-sm btn-outline-secondary' href='index.php?writerid={$category["userid"]}'>Devamını Oku...</a>
          </div>
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
-          <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
-          <br>
-          <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
-      </div>
+         <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$category['username']}</a>
+         <br>
+         <span style='color: DimGray;'>Category:</span> {$category['categoryname']}
+     </div>
       <!--   <small class='text-muted'>9 mins</small>  -->
        </div>
      </div>

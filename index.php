@@ -93,10 +93,14 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 require_once 'db.php';
 
 /*   SELECT * FROM blogs */
-$SORGU = $DB->prepare("SELECT blogs.*,users.*
+/* SELECT blogs.*,users.*
 FROM users
 INNER JOIN blogs
-ON blogs.writerid=users.userid");
+ON blogs.writerid=users.userid */
+$SORGU = $DB->prepare("SELECT blogs.*, users.*, categories.*
+FROM users
+INNER JOIN blogs ON blogs.writerid = users.userid
+INNER JOIN categories ON blogs.categoryid = categories.categoryid");
 $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 //echo '<pre>'; print_r($users);
@@ -111,10 +115,12 @@ foreach ($blogs as $blog) {
           <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['blogdate']}</span></h3>
           <p>{$blog['summary']}</p>
           <a href='#' class='btn btn-primary'>Devamını Oku</a>
-
           <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
           <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
+          <br>
+          <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
       </div>
+
           </div>
           </div>
   ";

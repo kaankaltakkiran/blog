@@ -26,7 +26,7 @@ die(); */
 
 $Categories = "";
 foreach ($categories as $category) {
-    $Categories .= "<a class='dropdown-item' href='index.php?kategori={$category["categoryid"]}'>{$category["categoryname"]}</a>";
+    $Categories .= "<a class='dropdown-item' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
 }
 
 ?>
