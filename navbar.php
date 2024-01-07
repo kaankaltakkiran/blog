@@ -50,7 +50,7 @@ die(); */
 
 $Users = "";
 foreach ($users as $user) {
-    $Users .= "<a class='dropdown-item' href='index.php?user={$user["userid"]}'>{$user["username"]}</a>";
+    $Users .= "<a class='dropdown-item' href='blog.show.php?writerid={$user["userid"]}'>{$user["username"]}</a>";
 }
 ?>
         <li class="nav-item dropdown">
