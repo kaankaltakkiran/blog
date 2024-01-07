@@ -151,9 +151,9 @@ for ($i = 0; $i < $totalCategories; $i++) {
 
     //! Veri sayısı tek ise firstListItems'a, çift ise secondListItems'a ekle
     if ($i % 2 == 0) {
-        $firstListItems .= "<a class='list-group-item list-group-item-action' href='index.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
+        $firstListItems .= "<a class='list-group-item list-group-item-action' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
     } else {
-        $secondListItems .= "<a href='index.php?categoryid={$category["categoryid"]}' class='list-group-item list-group-item-action'>{$category["categoryname"]}</a>";
+        $secondListItems .= "<a href='blog.category.show.php?categoryid={$category["categoryid"]}' class='list-group-item list-group-item-action'>{$category["categoryname"]}</a>";
     }
 }
 ?>

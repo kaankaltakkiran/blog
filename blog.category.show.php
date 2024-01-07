@@ -12,16 +12,7 @@
     <body>
     <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
       <?php include 'navbar.php';?>
-  <!--     Header Start -->
-      <div class="container">
-        <div class="row justify-content-center ">
-          <div class="col-6">
-        <h1 class='alert alert-primary mt-3 text-center'>Bloguma Hoşgeldiniz!</h1>
-        </div>
-        </div>
-  <!--     Header End -->
-    <div class="row">
-    <?php
+      <?php
 
 require_once 'db.php';
 $id = $_GET["categoryid"];
@@ -38,6 +29,17 @@ $SORGU->execute();
 $categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($users);
 die(); */
+?>
+  <!--     Header Start -->
+      <div class="container">
+        <div class="row justify-content-center ">
+          <div class="col-6">
+        <h1 class='alert alert-primary mt-3 text-center'><?php echo $categoryies[0]['categoryname'] ?></h1>
+        </div>
+        </div>
+  <!--     Header End -->
+    <div class="row">
+    <?php
 foreach ($categoryies as $category) {
     echo "
    <div class='col-6'>
