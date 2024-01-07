@@ -19,8 +19,16 @@ $categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($users);
 die(); */
 // Kontrol: Eğer kayıt yoksa hata sayfasına yönlendir
+//!Birinci yöntem
+/* if (empty($categoryies)) {
+header("Location: category.error.php");
+exit();
+} */
 if (empty($categoryies)) {
-    header("Location: category.error.php");
+    echo "<script>
+          alert('There is no record in the database. You are redirected to the home page...!');
+          window.location.href = 'index.php';
+        </script>";
     exit();
 }
 ?>
