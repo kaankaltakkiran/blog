@@ -28,6 +28,8 @@ INNER JOIN categories ON blogs.categoryid = categories.categoryid WHERE users.us
 $SORGU->bindParam(':writerid', $id);
 $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+/* echo '<pre>'; print_r($blogs);
+die(); */
 ?>
   <!--     Header Start -->
       <div class="container">
@@ -39,9 +41,6 @@ $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
   <!--     Header End -->
     <div class="row">
     <?php
-
-/* echo '<pre>'; print_r($blogs);
-die(); */
 foreach ($blogs as $blog) {
     echo "
    <div class='col-6'>
@@ -54,7 +53,7 @@ foreach ($blogs as $blog) {
        </p>
        <div class='d-flex justify-content-between align-items-center'>
          <div class='btn-group'>
-         <a class='btn btn-sm btn-outline-secondary' href='index.php?writerid={$blog["userid"]}'>Devamını Oku...</a>
+         <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
          </div>
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
           <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
