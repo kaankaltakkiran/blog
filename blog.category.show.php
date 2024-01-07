@@ -1,21 +1,8 @@
 <?php
 @session_start();
 $activePage = "categoryies";
-
 ?>
-  <!doctype html>
-  <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Bootstrap demo</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <body>
-    <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
-      <?php include 'navbar.php';?>
-      <?php
-
+ <?php
 require_once 'db.php';
 $id = $_GET["categoryid"];
 /* SELECT blogs.*,users.*
@@ -32,6 +19,18 @@ $categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($users);
 die(); */
 ?>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title><?php echo $categoryies[0]['categoryname'] ?></title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+    <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
+      <?php include 'navbar.php';?>
+
   <!--     Header Start -->
       <div class="container">
         <div class="row justify-content-center ">
@@ -54,18 +53,16 @@ foreach ($categoryies as $category) {
        </p>
        <div class='d-flex justify-content-between align-items-center'>
          <div class='btn-group'>
-         <a class='btn btn-sm btn-outline-secondary' href='index.php?writerid={$category["userid"]}'>Devamını Oku...</a>
+         <a class='btn btn-outline-success' href='blog.show.php?blogid={$category["blogid"]}'>Devamını Oku...</a>
          </div>
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
-         <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$category['username']}</a>
+         <a href='blog.writer.php?writerid={$category["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$category['username']}</a>
          <br>
          <span style='color: DimGray;'>Category:</span> {$category['categoryname']}
      </div>
-      <!--   <small class='text-muted'>9 mins</small>  -->
        </div>
      </div>
-   </div> <!-- MakaleSonu -->
- </div> <!-- col -->
+   </div>
    ";
 }
 ?>

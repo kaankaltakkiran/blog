@@ -2,17 +2,6 @@
 @session_start();
 $activePage = "writers";
 ?>
-  <!doctype html>
-  <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Bootstrap demo</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <body>
-    <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
-      <?php include 'navbar.php';?>
 <?php
 require_once 'db.php';
 $id = $_GET["writerid"];
@@ -31,6 +20,17 @@ $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($blogs);
 die(); */
 ?>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title><?php echo $blogs[0]['username'] ?>'s Blog</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+    <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
+      <?php include 'navbar.php';?>
   <!--     Header Start -->
       <div class="container">
         <div class="row justify-content-center ">
@@ -56,7 +56,7 @@ foreach ($blogs as $blog) {
          <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
          </div>
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
-          <a href='#' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
+          <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
           <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
       </div>
