@@ -19,6 +19,14 @@ $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>'; print_r($blogs);
 die(); */
+//! Kontrol: Eğer kayıt yoksa hata sayfasına yönlendir
+if (empty($blogs)) {
+    echo "<script>
+        alert('The author hasn't blog. You are redirected to the homepage.');
+        window.location.href = 'index.php';
+      </script>";
+    exit();
+}
 ?>
   <!doctype html>
   <html lang="en">
@@ -60,11 +68,10 @@ foreach ($blogs as $blog) {
           <br>
           <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
       </div>
-      <!--   <small class='text-muted'>9 mins</small>  -->
        </div>
      </div>
-   </div> <!-- MakaleSonu -->
- </div> <!-- col -->
+   </div>
+ </div>
    ";
 
 }
