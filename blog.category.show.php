@@ -1,5 +1,7 @@
 <?php
 @session_start();
+$activePage = "categoryies";
+
 ?>
   <!doctype html>
   <html lang="en">

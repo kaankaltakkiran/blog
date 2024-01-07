@@ -16,6 +16,9 @@
         </li>
         <?php
 require_once 'db.php';
+//!Hangi kategorinin seçildiğini anlamak için(chatgpt)
+$activeCategoryID = isset($_GET['categoryid']) ? $_GET['categoryid'] : null;
+
 $sql = "SELECT * FROM categories";
 $SORGU = $DB->prepare($sql);
 $SORGU->execute();
@@ -26,12 +29,13 @@ die(); */
 
 $Categories = "";
 foreach ($categories as $category) {
-    $Categories .= "<a class='dropdown-item' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
+    $isActive = ($activeCategoryID == $category["categoryid"]) ? 'active' : '';
+    $Categories .= "<a class='dropdown-item {$isActive}' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
 }
 
 ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle  <?=($activePage == 'categoryies') ? 'active' : '';?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Categoryies
           </a>
           <ul class="dropdown-menu">
@@ -40,6 +44,9 @@ foreach ($categories as $category) {
         </li>
         <?php
 require_once 'db.php';
+//!Hangi kategorinin seçildiğini anlamak için(chatgpt)
+$activeWriterID = isset($_GET['writerid']) ? $_GET['writerid'] : null;
+
 $sql = "SELECT * FROM users";
 $SORGU = $DB->prepare($sql);
 $SORGU->execute();
@@ -50,11 +57,13 @@ die(); */
 
 $Users = "";
 foreach ($users as $user) {
-    $Users .= "<a class='dropdown-item' href='blog.show.php?writerid={$user["userid"]}'>{$user["username"]}</a>";
+    $isActive = ($activeWriterID == $user["userid"]) ? 'active' : '';
+    $Users .= "<a class='dropdown-item {$isActive}' href='blog.show.php?writerid={$user["userid"]}'>{$user["username"]}</a>";
+
 }
 ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle  <?=($activePage == 'writers') ? 'active' : '';?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Writers
           </a>
           <ul class="dropdown-menu">

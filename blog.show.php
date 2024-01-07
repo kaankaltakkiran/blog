@@ -1,5 +1,6 @@
 <?php
 @session_start();
+$activePage = "writers";
 ?>
   <!doctype html>
   <html lang="en">
