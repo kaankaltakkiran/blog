@@ -3,3 +3,8 @@ image boyutu
 uniqe blog sayfası tasarımı
 yazar ilişkisi eksik
 login control
+search blog
+kullanıcı profil sayfası
+resime link
+sayfa titları
+proje dosyalama

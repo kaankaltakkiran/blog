@@ -34,6 +34,12 @@ $blog = $blogs[0];
 /* echo "<pre>";
 print_r($blogs);
 die(); */
+//! Giriş yapan kullanıcı id'si ile blog yazarının id'si aynı değilse yetkilendirme hatası ver
+if ($_SESSION['id'] !== $blog['writerid']) {
+    //!Yetkilendirme hatası durumunda bir hata sayfasına yönlendir
+    header("Location: authorizationControl.php");
+    exit();
+}
 if (isset($_POST['form_submit'])) {
 
     //!Form elemanları
@@ -115,36 +121,6 @@ if (!empty($errors)) {
     }
 }
 ?>
-
-<?php
-//! Hata mesajlarını göster
-if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo '
-        <div class="container">
-    <div class="auto-close alert mt-3 text-center alert-danger" role="alert">
-    ' . $error . '
-    </div>
-    </div>
-    ';
-    }
-}
-?>
-<?php
-//! Başarılı mesajlarını göster
-if (!empty($approves)) {
-    foreach ($approves as $approve) {
-        echo '
-        <div class="container">
-    <div class="auto-close alert mt-3 text-center alert-success" role="alert">
-    ' . $approve . '
-    </div>
-    </div>
-    ';
-    }
-}
-?>
-
   <div class="form-floating mb-3">
   <input type="text"  class="form-control" value="<?php echo $_SESSION['userName'] ?>"disabled readonly>
   <label>Yazıyı Ekleyen</label>
