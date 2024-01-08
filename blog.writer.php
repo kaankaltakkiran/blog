@@ -63,6 +63,13 @@ foreach ($blogs as $blog) {
          <div class='btn-group'>
          <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
          </div>
+         ";
+    //! Chatgpt çözümü
+    if ($_SESSION['id'] == $blog['userid']) {
+        // Display the "Update Blog" button if they match
+        echo "<a class='btn btn-danger' href='blog.show.php?blogid={$blog["blogid"]}'>Update Blog</a>";
+    }
+    echo "
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
           <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
@@ -72,7 +79,7 @@ foreach ($blogs as $blog) {
      </div>
    </div>
  </div>
-   ";
+ ";
 
 }
 ?>
