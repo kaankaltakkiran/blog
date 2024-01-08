@@ -58,7 +58,8 @@ foreach ($categoryies as $category) {
     echo "
    <div class='col-6'>
    <div class='card mb-4 shadow-sm'>
-     <img class='card-img-top' src='images/{$category['blogimage']}' height='400' width='100%'  />
+   <a href='blog.show.php?blogid={$category["blogid"]}'> <img class='card-img-top' src='images/{$category['blogimage']}' height='400' width='100%'  />
+   </a>
      <div class='card-body'>
        <p class='card-text'>
          <h3>{$category['title']}</h3>

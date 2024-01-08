@@ -67,10 +67,14 @@ foreach ($carouselblogs as $key => $carouselblog) {
     $activeClass = ($key === 0) ? 'active' : ''; // İlk öğe için active sınıfını ayarla
     ?>
                     <div class="carousel-item <?php echo $activeClass; ?>" data-bs-interval="2000">
-                        <img src="images/<?php echo $carouselblog['blogimage']; ?>" class="d-block w-100" alt="Blog Image">
+                    <a href="blog.show.php?blogid=<?php echo $carouselblog['blogid']; ?>"> <img src="images/<?php echo $carouselblog['blogimage']; ?>" class="d-block w-100" alt="Blog Image">
+                    </a>
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?php echo $carouselblog['title']; ?></h5>
                             <p><?php echo $carouselblog['summary']; ?></p>
+
+
+
                         </div>
                     </div>
                 <?php }?>
@@ -107,12 +111,11 @@ INNER JOIN categories ON blogs.categoryid = categories.categoryid");
 $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 //echo '<pre>'; print_r($users);
-
 foreach ($blogs as $blog) {
     echo "
       <div class='row mt-3 '>
           <div class='col-4'>
-            <img src='images/{$blog['blogimage']}' class='card-img-top' alt='sa'>
+          <a href='blog.show.php?blogid={$blog["blogid"]}'>  <img src='images/{$blog['blogimage']}' class='card-img-top' alt='Blog Image'></a>
           </div>
           <div class='col-8'>
           <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['blogdate']}</span></h3>

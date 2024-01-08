@@ -53,7 +53,8 @@ foreach ($blogs as $blog) {
     echo "
    <div class='col-6'>
    <div class='card mb-4 shadow-sm'>
-     <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
+   <a href='blog.show.php?blogid={$blog["blogid"]}'> <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
+   </a>
      <div class='card-body'>
        <p class='card-text'>
          <h3>{$blog['title']}</h3>
