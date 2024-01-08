@@ -136,7 +136,7 @@ foreach ($blogs as $blog) {
 ?>
           </div>
           <div class="col-5 border">
-          <h2 class="text-center text-danger mb-3  ">Katogeriler</h2>
+          <h2 class='alert alert-danger mb-3 text-center text-danger'>Categorories</h2>
           <?php
 require_once 'db.php';
 $sql = "SELECT * FROM categories";
