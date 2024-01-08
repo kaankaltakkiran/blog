@@ -39,38 +39,41 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
         </div>
         </div>
   <!--     Header End -->
+  <?php
+
+require_once 'db.php';
+
+$SORGU = $DB->prepare("SELECT * FROM blogs ORDER BY blogid DESC LIMIT 3");
+$SORGU->execute();
+$carouselblogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!-- Chatgpt çözümü ile yapılan carousel -->
   <!--     Carousel Start -->
   <h2 class="text-center  text-danger ">Popüler Bloglar</h2>
         <div class="row justify-content-center ">
           <div class="col-6">
           <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <?php
+foreach ($carouselblogs as $key => $carouselblog) {
+    $activeClass = ($key === 0) ? 'active' : ''; // İlk öğe için active sınıfını ayarla
+    ?>
+                    <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="<?php echo $key; ?>" class="<?php echo $activeClass; ?>" aria-label="Slide <?php echo $key + 1; ?>"></button>
+                <?php }?>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="2000">
-        <img src="./blog.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-      <img src="./blog2 .jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item"data-bs-interval="2000">
-      <img src="./blog3.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
+    <?php
+foreach ($carouselblogs as $key => $carouselblog) {
+    $activeClass = ($key === 0) ? 'active' : ''; // İlk öğe için active sınıfını ayarla
+    ?>
+                    <div class="carousel-item <?php echo $activeClass; ?>" data-bs-interval="2000">
+                        <img src="images/<?php echo $carouselblog['blogimage']; ?>" class="d-block w-100" alt="Blog Image">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><?php echo $carouselblog['title']; ?></h5>
+                            <p><?php echo $carouselblog['summary']; ?></p>
+                        </div>
+                    </div>
+                <?php }?>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
