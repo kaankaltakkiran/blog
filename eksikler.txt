@@ -5,5 +5,4 @@ yazar ilişkisi eksik
 login control
 search blog
 kullanıcı profil sayfası
-sayfa titları
 proje dosyalama

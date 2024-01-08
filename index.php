@@ -93,7 +93,7 @@ foreach ($carouselblogs as $key => $carouselblog) {
   <!--     Carousel end -->
   <!--     Bloglar Start -->
           <div class="row g-3 mt-4 ">
-          <h1 class='text-center text-danger '>Yayınlanan Bloglar</h1>
+          <h1 class='alert alert-info mt-3 text-center'>Published Blogs</h1>
           <div class="col-7 border ">
           <?php
 
@@ -120,7 +120,7 @@ foreach ($blogs as $blog) {
           <div class='col-8'>
           <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['blogdate']}</span></h3>
           <p>{$blog['summary']}</p>
-          <a href='blog.show.php?blogid={$blog["blogid"]}' class='btn btn-outline-primary'>Read More...</a>
+          <a href='blog.show.php?blogid={$blog["blogid"]}' class='btn btn-outline-info'>Read More...</a>
           <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
           <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
@@ -157,9 +157,9 @@ for ($i = 0; $i < $totalCategories; $i++) {
 
     //! Veri sayısı tek ise firstListItems'a, çift ise secondListItems'a ekle
     if ($i % 2 == 0) {
-        $firstListItems .= "<a class='list-group-item list-group-item-action' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
+        $firstListItems .= "<a class='list-group-item list-group-item-action list-group-item-info' href='blog.category.show.php?categoryid={$category["categoryid"]}'>{$category["categoryname"]}</a>";
     } else {
-        $secondListItems .= "<a href='blog.category.show.php?categoryid={$category["categoryid"]}' class='list-group-item list-group-item-action'>{$category["categoryname"]}</a>";
+        $secondListItems .= "<a href='blog.category.show.php?categoryid={$category["categoryid"]}' class='list-group-item list-group-item-action list-group-item-info'>{$category["categoryname"]}</a>";
     }
 }
 ?>
