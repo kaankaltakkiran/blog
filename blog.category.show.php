@@ -76,6 +76,7 @@ foreach ($categoryies as $category) {
        </div>
      </div>
    </div>
+   </div>
    ";
 }
 ?>
