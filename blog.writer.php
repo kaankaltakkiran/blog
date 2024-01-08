@@ -67,7 +67,7 @@ foreach ($blogs as $blog) {
     //! Chatgpt çözümü
     if ($_SESSION['id'] == $blog['userid']) {
         // Display the "Update Blog" button if they match
-        echo "<a class='btn btn-danger' href='blog.show.php?blogid={$blog["blogid"]}'>Update Blog</a>";
+        echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
     }
     echo "
          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>

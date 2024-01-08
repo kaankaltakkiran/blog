@@ -1,0 +1,5 @@
+frontend tasarımı
+image boyutu
+uniqe blog sayfası tasarımı
+yazar ilişkisi eksik
+login control
