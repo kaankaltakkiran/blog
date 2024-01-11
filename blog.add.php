@@ -23,7 +23,7 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     $errors = array();
 
     if ($error === 0) {
-        if ($img_size > 5242880) {
+        if ($img_size < 0) {
             $errors[] = "Sorry, your file is too large.";
         } else {
             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);

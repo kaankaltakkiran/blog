@@ -6,3 +6,6 @@ login control
 search blog
 kullanıcı profil sayfası
 proje dosyalama
+yazar ekleme sayfasıc
+categori ekleme sayfası
+blog yükledikten sonra direk kendi blog sayfasına yönlendirme
