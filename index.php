@@ -17,7 +17,7 @@ $activePage = "index";
       <div class="container">
       <?php if ($_SESSION['isLogin'] == 0) {?>
       <h3 class="text-center text-danger mt-3">Normalde sayfada olmayacak kısımlar</h3>
-      <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login Ekranı</a></p>
+      <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login</a></p>
 
       <?php }?>
       <!--  Yazı ekleme sayfasına giriş yapan kullanıcının idsini yollama -->
@@ -31,11 +31,11 @@ $SORGU->execute();
 $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 ?>
       <?php if ($_SESSION['isLogin'] == 1) {?>
-        <p class="text-center mt-3"> <a href="blog.add.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Yazı Ekleme Sayfası</a></p>
+        <p class="text-center mt-3"> <a href="blog.add.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Blog</a></p>
         <?php }?>
         <div class="row justify-content-center ">
           <div class="col-6">
-        <h1 class='alert alert-primary mt-3 text-center'>Bloguma Hoşgeldiniz!</h1>
+        <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V1!</h1>
         </div>
         </div>
   <!--     Header End -->
@@ -49,7 +49,7 @@ $carouselblogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- Chatgpt çözümü ile yapılan carousel -->
   <!--     Carousel Start -->
-  <h2 class="text-center  text-danger ">Popüler Bloglar</h2>
+  <h2 class="text-center  text-danger ">Popular Blogs</h2>
         <div class="row justify-content-center ">
           <div class="col-6">
           <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
