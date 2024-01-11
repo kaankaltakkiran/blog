@@ -17,15 +17,15 @@ INNER JOIN categories ON blogs.categoryid = categories.categoryid WHERE users.us
 $SORGU->bindParam(':writerid', $id);
 $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
-/* echo '<pre>'; print_r($blogs);
-die(); */
+/* echo '<pre>';
+print_r($blogs); */
+
 //! Kontrol: Eğer kayıt yoksa hata sayfasına yönlendir
 if (empty($blogs)) {
     echo "<script>
-        alert('The author hasn't blog. You are redirected to the homepage.');
-        window.location.href = 'index.php';
-      </script>";
-    exit();
+  alert('Theree is no record in the database. You are redirected to the home page...!');
+  window.location.href = 'index.php';
+</script>";
 }
 ?>
   <!doctype html>
