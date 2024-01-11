@@ -44,7 +44,49 @@ if (empty($blogs)) {
         <div class="row justify-content-center ">
           <div class="col-6">
         <h1 class='alert alert-primary mt-3 text-center'><?php echo $blogs[0]['username'] ?>'s Blog</h1>
+                <?php
+//!Chatgpt çözümü
+//! Veritabanından alınan datetime ddeğerini güncelle
+$id = $_SESSION['id'];
+$DB->prepare("UPDATE users SET lastlogintime = NOW() WHERE userid = :id")
+    ->execute(['id' => $id]);
+// Sistem saat dilimini belirle
+date_default_timezone_set('Europe/Istanbul');
+// Veritabanından alınan datetime değeri
+$veritabaniDatetime = $blogs[0]['lastlogintime'];
+
+// Şu anki datetime
+$suAnkiDatetime = new DateTime();
+
+// Veritabanından alınan datetime'ı DateTime nesnesine dönüştür
+$veritabaniDatetimeObj = new DateTime($veritabaniDatetime);
+
+// İki datetime arasındaki farkı hesapla
+$zamanFarki = $suAnkiDatetime->diff($veritabaniDatetimeObj);
+echo "<h5 class='text-danger text-center '>";
+if ($_SESSION['id'] == $blogs[0]['userid']) {
+// Eğer zaman farkı 365 günü aşıyorsa yıl, gün ve saat olarak ekrana yazdır
+    if ($zamanFarki->i < 1) {
+        echo " Last Login Time: " . "was active just now";
+    } else {
+        // Eğer zaman farkı 365 günü aşıyorsa yıl, gün ve saat olarak ekrana yazdır
+        if ($zamanFarki->days > 365) {
+            echo "Last Login Time: " . $zamanFarki->format('%y year, %d day, %h hour');
+        } elseif ($zamanFarki->days > 0 || $zamanFarki->h > 24) {
+            echo "Last Login Time: " . $zamanFarki->format('%d day, %h hour');
+
+        } elseif ($zamanFarki->i < 60) {
+            echo "Last Login Time: " . $zamanFarki->format('%i minute');
+        } else {
+            // Aksi durumda sadece tam formatı ekrana yazdır
+            echo "Last Login Time: " . $zamanFarki->format('%h hour,%i minute');
+        }
+    }
+    echo "</p>";
+}
+?>
         </div>
+
         </div>
   <!--     Header End -->
     <div class="row">
