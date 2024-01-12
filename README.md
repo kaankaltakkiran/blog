@@ -26,6 +26,7 @@ Php ile blog sayfası
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
+  - [ ] Blog arama eklenmeli.
 
  ## Yapılan Temel Geliştirmeler
 - [X] Kullanıcı **Customer cari** hizmetini kullabilmesi için önce üye olması gerekir. Kullanıcı üye olduktan sonra index sayfasına yönlendirilir.
