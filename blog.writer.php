@@ -114,7 +114,7 @@ foreach ($blogs as $blog) {
         echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
     }
     echo "
-         <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
+         <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
           <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
           <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}

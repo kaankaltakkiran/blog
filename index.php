@@ -121,7 +121,7 @@ foreach ($blogs as $blog) {
           <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['blogdate']}</span></h3>
           <p>{$blog['summary']}</p>
           <a href='blog.show.php?blogid={$blog["blogid"]}' class='btn btn-outline-info'>Read More...</a>
-          <div style='float: right;'><span style='color: DimGray;'>Yazar:</span>
+          <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
           <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
           <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
