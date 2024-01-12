@@ -17,6 +17,7 @@ $activePage = "index";
       <div class="container">
       <?php if ($_SESSION['isLogin'] == 0) {?>
       <h3 class="text-center text-danger mt-3">Normalde sayfada olmayacak kısımlar</h3>
+      <p class="text-center text-info ">Url'e admin yazılarak admin sayfasına gidilir.</p>
       <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login</a></p>
 
       <?php }?>
