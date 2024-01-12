@@ -67,7 +67,7 @@ foreach ($categoryies as $category) {
        </p>
        <div class='d-flex justify-content-between align-items-center'>
          <div class='btn-group'>
-         <a class='btn btn-outline-success' href='blog.show.php?blogid={$category["blogid"]}'>Devamını Oku...</a>
+         <a class='btn btn-outline-success' href='blog.show.php?blogid={$category["blogid"]}'>Read More...</a>
          </div>
          <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
          <a href='blog.writer.php?writerid={$category["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$category['username']}</a>
