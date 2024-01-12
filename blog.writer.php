@@ -74,12 +74,13 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
             echo "Last Login Time: " . $zamanFarki->format('%y year, %d day, %h hour');
         } elseif ($zamanFarki->days > 0 || $zamanFarki->h > 24) {
             echo "Last Login Time: " . $zamanFarki->format('%d day, %h hour');
-
-        } elseif ($zamanFarki->i < 60) {
-            echo "Last Login Time: " . $zamanFarki->format('%i minute');
         } else {
-            // Aksi durumda sadece tam formatı ekrana yazdır
-            echo "Last Login Time: " . $zamanFarki->format('%h hour,%i minute');
+            // Zaman farkı 60 dakikayı geçerse saat ve dakika, geçmezse sadece dakika
+            if ($zamanFarki->h >= 1) {
+                echo "Last Login Time: " . $zamanFarki->format('%h hour, %i minute');
+            } else {
+                echo "Last Login Time: " . $zamanFarki->format('%i minute');
+            }
         }
     }
     echo "</p>";
