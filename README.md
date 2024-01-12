@@ -37,6 +37,7 @@ Php ile blog sayfası
 - [X] Eğer blog update kısmında url den id değiştirilirse hata verir.
 - [X] Eğer blog kategorilerinde ve blog sahiplerinde blog yoksa alert mesajı verir.
 - [X] Admin kendi blog sayfasında en son aktif olduğu zamanı görüyor.
+- [X] Navbar menüde aktif link eklendi.
 
 
 
