@@ -19,6 +19,8 @@ Php ile blog sayfası
 |User Ahmet          |`ahmet@gmail.com`            |`123`           |
 |User Kaan          |`kaan_fb_aslan@hotmail.com`  |`123`
 
+ > **Note:** /admin yazarak admin login sayfasına ulaşabilirsiniz.
+
  ## Proje eksikleri
  - [ ] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı.
  - [ ] Kullanıcı profil sayfası eklenmeli.
