@@ -27,9 +27,16 @@ Php ile blog sayfası
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
   - [ ] Blog arama eklenmeli.
+  - [ ] Date e göre blog yayınlama işlemi olmalı.
 
  ## Yapılan Temel Geliştirmeler
-- [X] Kullanıcı **Customer cari** hizmetini kullabilmesi için önce üye olması gerekir. Kullanıcı üye olduktan sonra index sayfasına yönlendirilir.
+- [X] Admin email ve şifre ile giriş yapıp sitye blog ekleyebilir.
+- [X] Admin blog eklediyse ve giriş yaptıysa blogunu düzenleyebilir.
+- [X] Eğer blog update kısmında url den id değiştirilirse hata verir.
+- [X] Eğer blog kategorilerinde ve blog sahiplerinde blog yoksa alert mesajı verir.
+- [X] Admin kendi blog sayfasında en son aktif olduğu zamanı görüyor.
+
+
 
       
 ## Site Resimleri
