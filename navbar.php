@@ -86,9 +86,9 @@ foreach ($users as $user) {
         </li>
       </ul>
       <?php }?>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search Blog" aria-label="Search">
-        <button class="btn btn-outline-success" type="button">Search</button>
+      <form action="search.blog.php" class="d-flex" role="search" method="get">
+        <input class="form-control me-2" type="search" name="form_search_word" placeholder="Search Blog" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
