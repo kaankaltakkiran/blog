@@ -12,6 +12,7 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     $summary = $_POST['form_summary'];
     $blogDate = $_POST['form_date'];
 //!Checkbox değeri kontrolü
+    //?checkbox işaretli ise 1 değilse 0
     $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
     $content = $_POST['form_content'];
     //!Resim yükleme
@@ -23,6 +24,7 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     $errors = array();
 
     if ($error === 0) {
+        //!Resim boyutu kontrolü gözden geçmeli
         if ($img_size < 0) {
             $errors[] = "Sorry, your file is too large.";
         } else {

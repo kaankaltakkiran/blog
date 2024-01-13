@@ -16,6 +16,14 @@ $blog = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>';
 print_r($blog);
 die(); */
+//! Eğer urlden başka id yazıp bloga girmeye çalışırsa ve bu blog ispublish = 0 ise hata sayfasına yönlendir(No publish)
+if ($blog[0]['ispublish'] == 0) {
+    echo "<script>
+        alert('This Blog is not published. You are redirected to the home page...!');
+        window.location.href = 'index.php';
+      </script>";
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,9 +32,6 @@ die(); */
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $blog[0]['title'] ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <head>
-</head>
-
   </head>
   <body>
     <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
@@ -43,8 +48,8 @@ die(); */
 <br>
 <!-- nl2br boşlukları gösteriyor -->
 <p><?php echo nl2br($blog[0]['content']); ?></p>
-       </div> <!-- MakaleSonu -->
-     </div> <!-- col -->
+       </div>
+     </div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

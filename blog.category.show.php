@@ -24,6 +24,7 @@ die(); */
 header("Location: category.error.php");
 exit();
 } */
+//!Eğer ilgili kategoriye ait kayıt yoksa alert ile uyarı verip anasayfaya yönlendiriyoruz.
 if (empty($categoryies)) {
     echo "<script>
           alert('There is no record in the database. You are redirected to the home page...!');
