@@ -26,12 +26,12 @@ if (empty($search_word)) {
 } else {
     $searchWord = $_GET['form_search_word'];
     $searchWord = "%{$searchWord}%";
-
+    //hatayı dezelt publish
     $sql = "SELECT blogs.*, users.*, categories.*
     FROM users
     INNER JOIN blogs ON blogs.writerid = users.userid
     INNER JOIN categories ON blogs.categoryid = categories.categoryid
-    WHERE blogs.title LIKE :form_search_word
+    WHERE blogs.title LIKE :form_search_word and ispublish = 1
     LIMIT 5";
     $SORGU = $DB->prepare($sql);
 
