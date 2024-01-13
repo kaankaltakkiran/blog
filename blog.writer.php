@@ -92,8 +92,12 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
   <!--     Header End -->
     <div class="row">
     <?php
+
 foreach ($blogs as $blog) {
-    echo "
+/*   İkinici Çözüm
+Eğer blogtaki ispublish 1 ise yayınla */
+    if ($blog['ispublish'] == 1) {
+        echo "
    <div class='col-6'>
    <div class='card mb-4 shadow-sm'>
    <a href='blog.show.php?blogid={$blog["blogid"]}'> <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
@@ -108,12 +112,12 @@ foreach ($blogs as $blog) {
          <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
          </div>
          ";
-    //! Chatgpt çözümü
-    if ($_SESSION['id'] == $blog['userid']) {
-        // Display the "Update Blog" button if they match
-        echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
-    }
-    echo "
+        //! Chatgpt çözümü
+        if ($_SESSION['id'] == $blog['userid']) {
+            // Display the "Update Blog" button if they match
+            echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
+        }
+        echo "
          <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
           <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
           <br>
@@ -124,7 +128,7 @@ foreach ($blogs as $blog) {
    </div>
  </div>
  ";
-
+    }
 }
 ?>
 
