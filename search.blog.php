@@ -26,7 +26,6 @@ if (empty($search_word)) {
 } else {
     $searchWord = $_GET['form_search_word'];
     $searchWord = "%{$searchWord}%";
-    //hatayı dezelt publish
     $sql = "SELECT blogs.*, users.*, categories.*
     FROM users
     INNER JOIN blogs ON blogs.writerid = users.userid

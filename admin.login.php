@@ -104,7 +104,7 @@ if (!empty($errors)) {
 }
 ?>
   <div class="form-floating mb-3">
-  <input type="email" name="form_email" class="form-control">
+  <input type="email" name="form_email" value="<?php echo $_POST['form_email'] ?>" class="form-control">
   <label>Email</label>
 </div>
 <div class="input-group mb-3  input-group-lg">
