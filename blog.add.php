@@ -62,6 +62,20 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     }
 
 }
+require_once 'db.php';
+$id = $_GET["idUser"];
+$SORGU = $DB->prepare("SELECT * FROM users WHERE userid=:idUser");
+$SORGU->bindParam(':idUser', $id);
+$SORGU->execute();
+$user = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+/* echo '<pre>';
+print_r($user);
+die(); */
+if ($_SESSION['id'] !== $user[0]['userid']) {
+    //!Yetkilendirme hatası durumunda bir hata sayfasına yönlendir
+    header("Location: authorizationControl.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
