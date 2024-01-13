@@ -11,9 +11,9 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     $categoryId = $_POST['form_category'];
     $summary = $_POST['form_summary'];
     $blogDate = $_POST['form_date'];
-
+//!Checkbox değeri kontrolü
+    $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
     $content = $_POST['form_content'];
-
     //!Resim yükleme
     $img_name = $_FILES['form_image']['name'];
     $img_size = $_FILES['form_image']['size'];
@@ -37,7 +37,7 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // Insert into Database
-                $sql = "INSERT INTO blogs (writerid, title,categoryid,summary,blogdate,content,blogimage) VALUES (:id, :form_title,:form_category,:form_summary,:form_date,:form_content,'$new_img_name')";
+                $sql = "INSERT INTO blogs (writerid, title,categoryid,summary,blogdate,ispublish,content,blogimage) VALUES (:id, :form_title,:form_category,:form_summary,:form_date,:form_ispublish,:form_content,'$new_img_name')";
                 $SORGU = $DB->prepare($sql);
 
                 $SORGU->bindParam(':id', $writerId);
@@ -45,6 +45,7 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
                 $SORGU->bindParam(':form_category', $categoryId);
                 $SORGU->bindParam(':form_summary', $summary);
                 $SORGU->bindParam(':form_date', $blogDate);
+                $SORGU->bindParam(':form_ispublish', $isPublish);
                 $SORGU->bindParam(':form_content', $content);
 
                 $SORGU->execute();
@@ -147,6 +148,12 @@ foreach ($categories as $category) {
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Publish Date</label>
   <input type="date" name="form_date" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+</div>
+</div>
+<div class="mb-3">
+<div class="form-check form-switch">
+  <input class="form-check-input" value="0" name='form_ispublish' type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+  <label class="form-check-label" for="flexSwitchCheckChecked">Publish My Blog</label>
 </div>
 </div>
 <div class="mb-3">
