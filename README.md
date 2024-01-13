@@ -28,8 +28,9 @@ Php ile blog sayfası
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
-  - [X] Blog arama eklenmeli.(blog başlığa göre arama eklendi)
-  - [ ] Date e göre blog yayınlama işlemi olmalı.
+ - [X] Blog arama eklenmeli.(blog başlığa göre arama eklendi)
+ - [X] Public adında checkbox olmalı checkbox işaretli ise blog yayınlanmalı.(Yapıldı)
+ - [ ] Date e göre blog yayınlama işlemi olmalı.
 
  ## Yapılan Temel Geliştirmeler
 - [X] Admin email ve şifre ile giriş yapıp sitye blog ekleyebilir.
