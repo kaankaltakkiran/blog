@@ -12,7 +12,7 @@ ON blogs.writerid=users.userid WHERE blogs.categoryid=:categoryid */
 $SORGU = $DB->prepare("SELECT blogs.*, users.*, categories.*
 FROM users
 INNER JOIN blogs ON blogs.writerid = users.userid
-INNER JOIN categories ON blogs.categoryid = categories.categoryid where blogs.categoryid=:categoryid and ispublish = 1");
+INNER JOIN categories ON blogs.categoryid = categories.categoryid where blogs.categoryid=:categoryid and ispublish = 1 AND CURDATE() BETWEEN blogs.startdate AND blogs.lastdate");
 $SORGU->bindParam(':categoryid', $id);
 $SORGU->execute();
 $categoryies = $SORGU->fetchAll(PDO::FETCH_ASSOC);

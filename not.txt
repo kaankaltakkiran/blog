@@ -1,1 +1,2 @@
 Site blogdate gitti her yerde bu değişkeni kontrol et
+blog gözükür mü id 3 olan ? kontrol sağla

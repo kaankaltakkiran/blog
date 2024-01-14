@@ -46,7 +46,7 @@ require_once 'db.php';
 /* SELECT * FROM blogs ORDER BY blogid DESC LIMIT 3 */
 //?Birinci Çözüm
 //!Eğer bloglar yayınlasın seçildiğiyse sql den ispublish = 1 olanları getir
-$SORGU = $DB->prepare("SELECT * FROM blogs WHERE ispublish = 1 ORDER BY blogid DESC LIMIT 5");
+$SORGU = $DB->prepare("SELECT * FROM blogs WHERE ispublish = 1 AND CURDATE() BETWEEN blogs.startdate AND blogs.lastdate ORDER BY blogid DESC LIMIT 5");
 $SORGU->execute();
 $carouselblogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -107,10 +107,11 @@ require_once 'db.php';
 FROM users
 INNER JOIN blogs
 ON blogs.writerid=users.userid */
+/* Yeni eklenen blogları en üstte göstermek için ORDER BY blogid DESC kullandım? */
 $SORGU = $DB->prepare("SELECT blogs.*, users.*, categories.*
 FROM users
 INNER JOIN blogs ON blogs.writerid = users.userid
-INNER JOIN categories ON blogs.categoryid = categories.categoryid WHERE ispublish = 1");
+INNER JOIN categories ON blogs.categoryid = categories.categoryid WHERE ispublish = 1 AND CURDATE() BETWEEN blogs.startdate AND blogs.lastdate ORDER BY blogid DESC");
 $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 //echo '<pre>'; print_r($users);

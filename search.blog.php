@@ -30,7 +30,7 @@ if (empty($search_word)) {
     FROM users
     INNER JOIN blogs ON blogs.writerid = users.userid
     INNER JOIN categories ON blogs.categoryid = categories.categoryid
-    WHERE blogs.title LIKE :form_search_word and ispublish = 1
+    WHERE blogs.title LIKE :form_search_word and ispublish = 1 AND CURDATE() BETWEEN blogs.startdate AND blogs.lastdate ORDER BY blogid DESC
     LIMIT 5";
     $SORGU = $DB->prepare($sql);
 
