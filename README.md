@@ -30,7 +30,8 @@ Php ile blog sayfası
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
  - [X] Blog arama eklenmeli.(blog başlığa göre arama eklendi)
  - [X] Public adında checkbox olmalı checkbox işaretli ise blog yayınlanmalı.(Yapıldı)
- - [ ] Date e göre blog yayınlama işlemi olmalı.
+ - [X] Date e göre blog yayınlama işlemi olmalı.(Yapıldı)
+ - [X] Writer ve kullanıcı blog görme durumları yapılmalı.(Yapıldı) 
 
  ## Yapılan Temel Geliştirmeler
 - [X] Admin email ve şifre ile giriş yapıp sitye blog ekleyebilir.
