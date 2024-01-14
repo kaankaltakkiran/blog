@@ -46,7 +46,8 @@ if (isset($_POST['form_submit'])) {
     $title = $_POST['form_title'];
     $categoryId = $_POST['form_category'];
     $summary = $_POST['form_summary'];
-    $blogDate = $_POST['form_date'];
+    $blogStartDate = $_POST['form_startdate'];
+    $blogLastDate = $_POST['form_lastdate'];
     $content = $_POST['form_content'];
 
     $id = $_GET['blogid'];
@@ -78,14 +79,14 @@ if (isset($_POST['form_submit'])) {
                 //?unlink dosya silmek için kullanılır
                 unlink('images/' . $old_img_name);
                 //!Foto güncellediyse veritabanına yeni fotoğraf adını kaydet
-                $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,blogdate=:form_date,content=:form_content, blogimage = '$new_img_name' WHERE blogid = :blogid";
+                $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,content=:form_content, blogimage = '$new_img_name' WHERE blogid = :blogid";
             } else {
                 $errors[] = "You can't upload files of this type";
             }
         }
     } else {
         //!Foto güncellemediysen eski fotoğrafı kullan
-        $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,blogdate=:form_date,content=:form_content WHERE blogid = :blogid";
+        $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,content=:form_content WHERE blogid = :blogid";
     }
     //! Hata yoksa veritabanına kaydet
     if (empty($errors)) {
@@ -94,7 +95,8 @@ if (isset($_POST['form_submit'])) {
         $SORGU->bindParam(':form_title', $title);
         $SORGU->bindParam(':form_category', $categoryId);
         $SORGU->bindParam(':form_summary', $summary);
-        $SORGU->bindParam(':form_date', $blogDate);
+        $SORGU->bindParam(':form_startdate', $blogStartDate);
+        $SORGU->bindParam(':form_lastdate', $blogLastDate);
         $SORGU->bindParam(':form_content', $content);
 
         $SORGU->bindParam(':blogid', $id);
@@ -159,8 +161,14 @@ foreach ($categories as $category) {
 </div>
 <div class="form-floating mb-3">
 <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Publish Date</label>
-  <input type="date" name="form_date"  value="<?php echo $blog['blogdate']; ?>" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+  <label for="exampleFormControlInput1" class="form-label">Start Publish Date</label>
+  <input type="date" name="form_startdate" value="<?php echo $blog['startdate']; ?>" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+</div>
+</div>
+<div class="form-floating mb-3">
+<div class="mb-3">
+  <label for="exampleFormControlInput2" class="form-label">Last Published Date</label>
+  <input type="date" name="form_lastdate" value="<?php echo $blog['lastdate']; ?>" class="form-control" id="exampleFormControlInput2"  min="<?php echo date('Y-m-d'); ?>" />
 </div>
 </div>
 <div class="mb-3">
