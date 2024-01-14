@@ -31,6 +31,10 @@ $SORGU->bindParam(':idUser', $id);
 $SORGU->execute();
 $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 ?>
+  <?php if ($_SESSION['role'] == 2) {?>
+ <p class="text-center mt-3"> <a href="add.admin.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Admin User</a></p>
+        <?php }?>
+
       <?php if ($_SESSION['isLogin'] == 1) {?>
         <p class="text-center mt-3"> <a href="blog.add.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Blog</a></p>
         <?php }?>

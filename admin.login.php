@@ -67,7 +67,7 @@ if (isset($_POST['form_email'])) {
                 $_SESSION['isLogin'] = 1; // Kullanıcı giriş yapmışsa 1 yap
                 $_SESSION['userName'] = $CEVAP[0]['username']; // Kullanıcının adını al
                 $_SESSION['id'] = $CEVAP[0]['userid']; // Kullanıcının ID'sini al
-                $_SESSION['rol'] = $CEVAP[0]['role']; // Kullanıcının ROL'ünü al
+                $_SESSION['role'] = $CEVAP[0]['roleuser']; // Kullanıcının ROL'ünü al
                 header("location: index.php");
                 die();
             } else {
