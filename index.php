@@ -36,7 +36,7 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
         <?php }?>
         <div class="row justify-content-center ">
           <div class="col-6">
-        <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V1!</h1>
+        <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V2!</h1>
         </div>
         </div>
   <!--     Header End -->
