@@ -92,77 +92,71 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
   <!--     Header End -->
     <div class="row">
     <?php
-
+//!publish olsun denen ve tarihleri uygun olan blogları getir
 foreach ($blogs as $blog) {
-    //!Eğer yazar giriş yaptıysa tüm blogları görebilir
-    if ($blog['writerid'] == $_SESSION['id']) {
+    if ($blog['ispublish'] == 1 && strtotime($blog['startdate']) <= time() && strtotime($blog['lastdate']) >= time()) {
         echo "
       <div class='col-6'>
-      <div class='card mb-4 shadow-sm'>
-      <a href='blog.show.php?blogid={$blog["blogid"]}'> <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
-      </a>
-        <div class='card-body'>
-          <p class='card-text'>
-            <h3>{$blog['title']}</h3>
-            <p>{$blog['summary']}</p>
-          </p>
-          <div class='d-flex justify-content-between align-items-center'>
-            <div class='btn-group'>
-            <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
-            </div>
-            ";
-        //! Chatgpt çözümü
+          <div class='card mb-4 shadow-sm'>
+              <a href='blog.show.php?blogid={$blog["blogid"]}'>
+                  <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%' />
+              </a>
+              <div class='card-body'>
+                  <p class='card-text'>
+                      <h3>{$blog['title']}</h3>
+                      <p>{$blog['summary']}</p>
+                  </p>
+                  <div class='d-flex justify-content-between align-items-center'>
+                      <div class='btn-group'>
+                          <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
+                      </div>";
+
         if ($_SESSION['id'] == $blog['userid']) {
-            // Display the "Update Blog" button if they match
+            // Display the "Update Blog" button if the user is the owner of the blog
             echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
         }
-        echo "
-            <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
-             <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
-             <br>
-             <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
-         </div>
+
+        echo "<div style='float: right;'><span style='color: DimGray;'>Writer:</span>
+                  <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
+                  <br>
+                  <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-    ";
-        /*   İkinici Çözüm
-    Eğer blogtaki ispublish 1 ise yayınla */
-    } else if ($blog['ispublish'] == 1) {
+  </div>
+</div>";
+    }
+    //!Blog sahibi koşulsuz tüm içeriği görsün
+    else if ($_SESSION['id'] == $blog['userid']) {
         echo "
-   <div class='col-6'>
-   <div class='card mb-4 shadow-sm'>
-   <a href='blog.show.php?blogid={$blog["blogid"]}'> <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%'  />
-   </a>
-     <div class='card-body'>
-       <p class='card-text'>
-         <h3>{$blog['title']}</h3>
-         <p>{$blog['summary']}</p>
-       </p>
-       <div class='d-flex justify-content-between align-items-center'>
-         <div class='btn-group'>
-         <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
-         </div>
-         ";
-        //! Chatgpt çözümü
-        if ($_SESSION['id'] == $blog['userid']) {
-            // Display the "Update Blog" button if they match
-            echo "<a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>";
-        }
-        echo "
-         <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
-          <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
-          <br>
-          <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
+      <div class='col-6'>
+          <div class='card mb-4 shadow-sm'>
+              <a href='blog.show.php?blogid={$blog["blogid"]}'>
+                  <img class='card-img-top' src='images/{$blog['blogimage']}' height='400' width='100%' />
+              </a>
+              <div class='card-body'>
+                  <p class='card-text'>
+                      <h3>{$blog['title']}</h3>
+                      <p>{$blog['summary']}</p>
+                  </p>
+                  <div class='d-flex justify-content-between align-items-center'>
+                      <div class='btn-group'>
+                          <a class='btn btn-outline-success' href='blog.show.php?blogid={$blog["blogid"]}'>Read More...</a>
+                      </div>
+                      <a class='btn btn-danger' href='blog.update.php?blogid={$blog["blogid"]}'>Update Blog</a>
+                      <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
+                          <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
+                          <br>
+                          <span style='color: DimGray;'>Category:</span> {$blog['categoryname']}
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-       </div>
-     </div>
-   </div>
- </div>
- ";
+  </div>";
     }
 }
+
 ?>
 
     </div>
