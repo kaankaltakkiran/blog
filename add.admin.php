@@ -83,15 +83,15 @@ if (!empty($errors)) {
   <label>Added By Admin Name</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="text"  class="form-control" name="form_username">
+  <input type="text"  class="form-control" name="form_username" required>
   <label>UserName</label>
 </div>
   <div class="form-floating mb-3">
-  <input type="email" name="form_email"class="form-control">
+  <input type="email" name="form_email"class="form-control"required>
   <label>Email</label>
 </div>
 <div class="input-group mb-3  input-group-lg">
-  <input type="password"  name="form_password" class="form-control" id="password" placeholder="Password">
+  <input type="password"  name="form_password" class="form-control" id="password" placeholder="Password"required>
   <span class="input-group-text bg-transparent"><i id="togglePassword" class="bi bi-eye-slash"></i></span>
 </div>
 <div class="form-check">

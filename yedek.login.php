@@ -61,7 +61,7 @@ if (isset($_POST['form_email'])) {
             //! Kullanıcının şifresini doğrulama
             //? posttan gelen ile db den gelen karşılaştırma
             //? password_verify() fonksiyonu ile
-            if (password_verify($userpassword, $CEVAP[0]['userpassword'])) {
+            if ($userpassword == $CEVAP[0]['userpassword']) {
                 //return true;
                 @session_start();
                 $_SESSION['isLogin'] = 1; // Kullanıcı giriş yapmışsa 1 yap
@@ -74,7 +74,6 @@ if (isset($_POST['form_email'])) {
                 //return false;
                 //!Şifreler Eşleşmiyorsa
                 $errors[] = "INCORRECT EMAIL OR PASSWORD MATCH!...";
-
             }
         } else {
             //! Kullanıcı yoksa
