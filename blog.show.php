@@ -1,4 +1,5 @@
 <?php
+@session_start();
 require_once 'db.php';
 $id = $_GET["blogid"];
 
@@ -22,6 +23,14 @@ if ($blog[0]['ispublish'] == 0) {
         alert('This Blog is not published. You are redirected to the home page...!');
         window.location.href = 'index.php';
       </script>";
+    exit();
+}
+//!Sadece blog sahibi yayından kaldırılan blogu görebilir
+if ($_SESSION['id'] !== $blog[0]['userid'] and (strtotime($blog[0]['startdate']) > time() || strtotime($blog[0]['lastdate']) < time())) {
+    echo "<script>
+      alert('This blog has been removed from its publication dates.!!! You are redirected to the home page.!!!');
+      window.location.href = 'index.php';
+    </script>";
     exit();
 }
 ?>
