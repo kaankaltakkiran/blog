@@ -18,7 +18,7 @@ $blog = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 print_r($blog);
 die(); */
 //! Eğer urlden başka id yazıp bloga girmeye çalışırsa ve bu blog ispublish = 0 ise hata sayfasına yönlendir(No publish)
-if ($blog[0]['ispublish'] == 0) {
+if ($_SESSION['id'] !== $blog[0]['userid'] and $blog[0]['ispublish'] == 0) {
     echo "<script>
         alert('This Blog is not published. You are redirected to the home page...!');
         window.location.href = 'index.php';
