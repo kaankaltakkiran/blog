@@ -43,7 +43,7 @@ if ($blog[0]['ispublish'] == 0) {
        <h1 class="text-danger text-center"><?php echo $blog[0]['title']; ?></h1>
             <div style='float: left;'><span style='color: DimGray;'>Writer:</span>
           <a href='blog.writer.php?writerid=<?php echo $blog[0]['userid']; ?>' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'><?php echo $blog[0]['username']; ?></a>
-          <span style='color: DimGray;'><?php echo $blog[0]['blogdate']; ?></span>
+          <span style='color: DimGray;'><?php echo $blog[0]['startdate']; ?></span>
       </div>
 <br>
 <!-- nl2br boşlukları gösteriyor -->

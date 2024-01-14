@@ -10,7 +10,8 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     $title = $_POST['form_title'];
     $categoryId = $_POST['form_category'];
     $summary = $_POST['form_summary'];
-    $blogDate = $_POST['form_date'];
+    $blogStartDate = $_POST['form_startdate'];
+    $blogLastDate = $_POST['form_lastdate'];
 //!Checkbox değeri kontrolü
     //?checkbox işaretli ise 1 değilse 0
     $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
@@ -39,14 +40,15 @@ if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // Insert into Database
-                $sql = "INSERT INTO blogs (writerid, title,categoryid,summary,blogdate,ispublish,content,blogimage) VALUES (:id, :form_title,:form_category,:form_summary,:form_date,:form_ispublish,:form_content,'$new_img_name')";
+                $sql = "INSERT INTO blogs (writerid, title,categoryid,summary,startdate,lastdate,ispublish,content,blogimage) VALUES (:id, :form_title,:form_category,:form_summary,:form_startdate,:form_lastdate,:form_ispublish,:form_content,'$new_img_name')";
                 $SORGU = $DB->prepare($sql);
 
                 $SORGU->bindParam(':id', $writerId);
                 $SORGU->bindParam(':form_title', $title);
                 $SORGU->bindParam(':form_category', $categoryId);
                 $SORGU->bindParam(':form_summary', $summary);
-                $SORGU->bindParam(':form_date', $blogDate);
+                $SORGU->bindParam(':form_startdate', $blogStartDate);
+                $SORGU->bindParam(':form_lastdate', $blogLastDate);
                 $SORGU->bindParam(':form_ispublish', $isPublish);
                 $SORGU->bindParam(':form_content', $content);
 
@@ -162,8 +164,14 @@ foreach ($categories as $category) {
 </div> -->
 <div class="form-floating mb-3">
 <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Publish Date</label>
-  <input type="date" name="form_date" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+  <label for="exampleFormControlInput1" class="form-label">Start Publish Date</label>
+  <input type="date" name="form_startdate" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+</div>
+</div>
+<div class="form-floating mb-3">
+<div class="mb-3">
+  <label for="exampleFormControlInput2" class="form-label">Last Published Date</label>
+  <input type="date" name="form_lastdate" class="form-control" id="exampleFormControlInput2"  min="<?php echo date('Y-m-d'); ?>" />
 </div>
 </div>
 <div class="mb-3">

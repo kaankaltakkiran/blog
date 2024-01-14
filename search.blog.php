@@ -58,7 +58,7 @@ if (empty($search_word)) {
               <a href='blog.show.php?blogid={$result["blogid"]}'>  <img src='images/{$result['blogimage']}' class='card-img-top' alt='Blog Image'></a>
               </div>
               <div class='col-8'>
-              <h3>{$result['title']} <span class='text-danger  fs-6' style='float: right;'>{$result['blogdate']}</span></h3>
+              <h3>{$result['title']} <span class='text-danger  fs-6' style='float: right;'>{$result['startdate']}</span></h3>
               <p>{$result['summary']}</p>
               <a href='blog.show.php?blogid={$result["blogid"]}' class='btn btn-outline-info'>Read More...</a>
               <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
