@@ -40,7 +40,8 @@ INSERT INTO `categories` (`categoryid`, `categoryname`, `categorydate`) VALUES
 (1,	'Sports',	'2024-01-11 17:26:08'),
 (2,	'Politics',	'2024-01-11 17:25:32'),
 (3,	'General',	'2024-01-11 17:25:47'),
-(4,	'Magazine',	'2024-01-11 17:26:03');
+(4,	'Magazine',	'2024-01-11 17:26:03'),
+(5,	'Travel',	'2024-01-15 08:11:35');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -48,16 +49,16 @@ CREATE TABLE `users` (
   `useremail` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `userpassword` varchar(255) NOT NULL,
-  `role` int(11) NOT NULL DEFAULT 1,
-  `userdate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `roleuser` int(11) NOT NULL DEFAULT 1,
+  `createddate` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `usergender` char(1) NOT NULL,
   `lastlogintime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 
-INSERT INTO `users` (`userid`, `useremail`, `username`, `userpassword`, `role`, `userdate`, `usergender`, `lastlogintime`) VALUES
-(1,	'admin@gmail.com',	'Admin',	'admin',	2,	'2024-01-12 08:39:29',	'E',	'2024-01-12 05:39:29'),
-(2,	'ahmet@gmail.com',	'Ahmet Yıldız',	'123',	2,	'2024-01-14 17:00:42',	'E',	'2024-01-14 14:00:42'),
-(3,	'kaan_fb_aslan@hotmail.com',	'Kaan Kaltakkıran',	'123',	2,	'2024-01-14 17:00:17',	'E',	'2024-01-14 14:00:17');
+INSERT INTO `users` (`userid`, `useremail`, `username`, `userpassword`, `roleuser`, `createddate`, `usergender`, `lastlogintime`) VALUES
+(1,	'admin@gmail.com',	'Admin',	'$2y$10$QQDHjNIuksa92JApEazZXuNTWcTMYY4/.NP3ETUiNXQdPT8E1xe9a',	2,	'2024-01-15 15:57:20',	'M',	'2024-01-15 12:57:20'),
+(2,	'ahmet@gmail.com',	'Ahmet Yıldız',	'$2y$10$1YvivBpKogHHtiPDN37JE.t2m2YhW12u7rKnGK2xNsxCYEvK8ggc6',	1,	'2024-01-15 15:56:27',	'M',	'2024-01-15 12:56:27'),
+(3,	'kaan_fb_aslan@hotmail.com',	'Kaan Kaltakkıran',	'$2y$10$z20YjVotse2uOhTo0QkhieqP/Ie2c2gHveUrriH3cXLIjDwu9r6/6',	1,	'2024-01-15 14:29:17',	'M',	'2024-01-15 11:29:17');
 
--- 2024-01-14 14:06:15
+-- 2024-01-15 12:58:21
