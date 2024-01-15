@@ -22,11 +22,11 @@ Php ile blog sayfası
  > **Note:** /admin yazarak admin login sayfasına ulaşabilirsiniz.
 
  ## Proje eksikleri
- - [ ] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı.
+ - [X] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı(yapıldı)
 -  [X] Admin ekleme sayfası eklenmeli (eklendi)
 -  [ ] writer tablosu ayrı mı olmalı ?
  - [ ] Kullanıcı profil sayfası eklenmeli.
- - [ ] Admin kategori ekleme sayfası olmalı
+ - [X] Admin kategori ekleme sayfası olmalı(eklendi)
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
