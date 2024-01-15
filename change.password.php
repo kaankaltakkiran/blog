@@ -1,5 +1,10 @@
 <?php
 @session_start();
+//!Eğer admin yada writer  dışında biri girmeye çalışırsa hata verdir
+if (empty($_SESSION['isLogin']) || $_SESSION['isLogin'] != 1) {
+    header("location: authorizationcontrol.php");
+    die();
+}
 ?>
 <!doctype html>
 <html lang="en">
