@@ -9,6 +9,7 @@ $activePage = "index";
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>My Blog</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
     <body>
     <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
@@ -16,12 +17,14 @@ $activePage = "index";
   <!--     Header Start -->
       <div class="container">
       <?php if ($_SESSION['isLogin'] == 0) {?>
-      <h3 class="text-center text-danger mt-3">Normalde sayfada olmayacak kısımlar</h3>
-      <p class="text-center text-info ">Url'e admin yazılarak admin sayfasına gidilir.</p>
-      <p class="text-center"> <a href="admin.login.php" class="btn btn-primary">Admin Login</a></p>
-      <p class="text-center"> <a href="writer.login.php" class="btn btn-primary">Writer Login</a></p>
+      <h3 class="text-center text-danger mt-3">Normalde sayfada görünmeyecek kısımlar!!!</h3>
+      <p class="text-center text-info fw-bold ">Url'e admin yazılarak admin login sayfasına gidilir.</p>
+      <p class="text-center"> <a href="admin.login.php" class="btn btn-info">Admin Login</a></p>
+      <p class="text-center text-success fw-bold ">Url'e writer yazılarak writer login sayfasına gidilir.</p>
+      <p class="text-center"> <a href="writer.login.php" class="btn btn-success">Writer Login</a></p>
 
       <?php }?>
+
       <!--  Yazı ekleme sayfasına giriş yapan kullanıcının idsini yollama -->
       <?php
 require_once 'db.php';
@@ -32,15 +35,59 @@ $SORGU->bindParam(':idUser', $id);
 $SORGU->execute();
 $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 ?>
-  <?php if ($_SESSION['role'] == 2) {?>
- <p class="text-center mt-3"> <a href="add.admin.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Admin User</a></p>
- <p class="text-center mt-3"> <a href="add.writer.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Writer User</a></p>
- <p class="text-center mt-3"> <a href="add.category.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Blog Category</a></p>
-        <?php }?>
-
-      <?php if ($_SESSION['isLogin'] == 1) {?>
-        <p class="text-center mt-3"> <a href="blog.add.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Blog</a></p>
-        <?php }?>
+<!-- Eğer adamin giriş yaparsa aşaığıdaki kısımlar görünür(role=2) -->
+    <?php if ($_SESSION['role'] == 2) {?>
+      <div class="container my-3 ">
+      <div class="row justify-content-center">
+          <div class="col-6">
+          <h1 class="text-center text-danger mt-3">Welcome</h1>
+          <h3 class="text-center text-muted">Admin: <?php echo $_SESSION['userName']; ?></h3>
+          <h5 class="text-center text-danger fw-bold"><?php
+date_default_timezone_set('Europe/Istanbul'); // Türkiye saat dilimine göre tarih ve saat ayarla
+    $date_and_time = date("d-m-Y H:i:s"); // Yıl-Ay-Gün Saat:Dakika:Saniye formatında tarih ve saat
+    echo "Date And Time: " . $date_and_time;
+    ?>
+</h5>
+       </div>
+        <div class="row justify-content-center g-4">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 " style="width: 18rem;">
+              <img src="./public/img/addAdmin.jpg" class="card-img-top" alt="Admin img">
+              <div class="card-body">
+                <h5 class="card-title">Add Admin User</h5>
+                <p class="card-text">Admin Adds Admin User</p>
+                <a href="add.admin.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-danger mt-3">Add Admin
+                <i class="bi bi-send-fill"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 " style="width: 18rem;">
+            <img src="./public/img/blogwriter.jpg" class="card-img-top" alt="Writer img">
+            <div class="card-body">
+              <h5 class="card-title">Add Writer User</h5>
+              <p class="card-text">Admin Adds Writer User</p>
+              <a href="add.writer.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-danger mt-3">Add Writer User
+              <i class="bi bi-send-fill"></i>
+              </a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 " style="width: 18rem;">
+          <img src="./public/img/category.jpg" class="card-img-top" alt="Category img">
+          <div class="card-body">
+            <h5 class="card-title">Add Blog Category</h5>
+            <p class="card-text">Admin Adds Blog Category</p>
+            <a href="add.category.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-danger mt-4" style="">Add Blog Category
+            <i class="bi bi-send-fill"></i></a>
+          </div>
+        </div>
+    </div>
+          </div>
+      </div>
+      <?php }?>
         <div class="row justify-content-center ">
           <div class="col-6">
         <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V2!</h1>
@@ -48,7 +95,6 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
         </div>
   <!--     Header End -->
   <?php
-
 require_once 'db.php';
 /* SELECT * FROM blogs ORDER BY blogid DESC LIMIT 3 */
 //?Birinci Çözüm
@@ -190,6 +236,7 @@ for ($i = 0; $i < $totalCategories; $i++) {
         </div>
             </div>
             <!--     Bloglar end -->
+  </div>
   </div>
       <?php include 'footer.php';?>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
