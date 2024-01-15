@@ -2,7 +2,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2023 Copyright: Kaan Kaltakkıran
-    <a class="text-body" target="_blank" href="https://github.com/kaankaltakkiran/Customer_cari_PHP/"><i class="bi bi-github fs-4"></i></a>
+    <a href="https://github.com/kaankaltakkiran/blog" target="_blank" rel="noopener noreferrer"><img width="35" height="35" src="https://img.icons8.com/plasticine/50/github.png" alt="github"/></a>
 
   </div>
   <!-- Copyright -->
