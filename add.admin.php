@@ -11,6 +11,11 @@
   <?php include 'navbar.php';?>
 <?php
 @session_start();
+//!Eğer admin kullnıcı dışında biri girmeye çalışırsa hata verdir
+if (empty($_SESSION['role']) || $_SESSION['role'] != 2) {
+    header("location: authorizationcontrol.php");
+    die();
+}
 //!form submit edilmişse
 if (isset($_POST['submit'])) {
     //!Hata mesajlarını göstermek için boş bir dizi
