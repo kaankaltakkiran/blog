@@ -1,6 +1,0 @@
-Site blogdate gitti her yerde bu değişkeni kontrol et
-blog gözükür mü id 3 olan ? kontrol sağla
-blog writerda yazar publish olmasa bile kendi blogunu görür
-publish olsun denen ve tarihleri uygun olan blogları getir
-add.admin.php?idUser=4
-login control kısmını kontrol et
