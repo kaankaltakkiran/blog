@@ -74,11 +74,11 @@ foreach ($users as $user) {
       <?php if ($_SESSION['isLogin'] == 1) {?>
        <ul class="navbar-nav">
        <li class="nav-item dropdown">
-          <a class="nav-link text-danger  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link text-danger  dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Hello! <?php echo $_SESSION['userName'] ?>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
             <?php if ($_SESSION['role'] == 1) {?>
             <li><a class="dropdown-item  <?=($activePage == 'blogAdd') ? 'active' : '';?>" href="blog.add.php?idUser=<?php echo $_SESSION['id'] ?>">Add Blog</a></li>
             <?php }?>
