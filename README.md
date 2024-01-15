@@ -25,6 +25,7 @@ Php ile blog sayfası
  - [ ] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı.
 -  [X] Admin ekleme sayfası eklenmeli (eklendi)
  - [ ] Kullanıcı profil sayfası eklenmeli.
+ - [ ] Admin kategori ekleme sayfası olmalı
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
