@@ -82,9 +82,6 @@ foreach ($carouselblogs as $key => $carouselblog) {
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?php echo $carouselblog['title']; ?></h5>
                             <p><?php echo $carouselblog['summary']; ?></p>
-
-
-
                         </div>
                     </div>
                 <?php }?>
@@ -123,13 +120,16 @@ $SORGU->execute();
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 //echo '<pre>'; print_r($users);
 foreach ($blogs as $blog) {
+    //!Format date
+    $startDate = new DateTime($blog['startdate']);
+    $formattedStartDate = $startDate->format('d-m-Y');
     echo "
       <div class='row mt-3 '>
           <div class='col-4'>
           <a href='blog.show.php?blogid={$blog["blogid"]}'>  <img src='images/{$blog['blogimage']}' class='card-img-top' alt='Blog Image'></a>
           </div>
           <div class='col-8'>
-          <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['startdate']}</span></h3>
+          <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$formattedStartDate}</span></h3>
           <p>{$blog['summary']}</p>
           <a href='blog.show.php?blogid={$blog["blogid"]}' class='btn btn-outline-info'>Read More...</a>
           <div style='float: right;'><span style='color: DimGray;'>Writer:</span>

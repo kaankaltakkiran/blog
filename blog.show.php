@@ -17,6 +17,10 @@ $blog = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>';
 print_r($blog);
 die(); */
+//!Format date
+$startDate = new DateTime($blog[0]['startdate']);
+$formattedStartDate = $startDate->format('d-m-Y');
+
 //! Eğer urlden başka id yazıp bloga girmeye çalışırsa ve bu blog ispublish = 0 ise hata sayfasına yönlendir(No publish)
 if ($_SESSION['id'] !== $blog[0]['userid'] and $blog[0]['ispublish'] == 0) {
     echo "<script>
@@ -52,11 +56,11 @@ if ($_SESSION['id'] !== $blog[0]['userid'] and (strtotime($blog[0]['startdate'])
        <h1 class="text-danger text-center"><?php echo $blog[0]['title']; ?></h1>
             <div style='float: left;'><span style='color: DimGray;'>Writer:</span>
           <a href='blog.writer.php?writerid=<?php echo $blog[0]['userid']; ?>' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'><?php echo $blog[0]['username']; ?></a>
-          <span style='color: DimGray;'><?php echo $blog[0]['startdate']; ?></span>
       </div>
+      <span style='color: DimGray; margin-left: 24rem;'><?php echo $formattedStartDate ?></span>
 <br>
 <!-- nl2br boşlukları gösteriyor -->
-<p><?php echo nl2br($blog[0]['content']); ?></p>
+<p class="mt-2"><?php echo nl2br($blog[0]['content']); ?></p>
        </div>
      </div>
 </div>
