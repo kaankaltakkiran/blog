@@ -24,6 +24,7 @@ Php ile blog sayfası
  ## Proje eksikleri
  - [X] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı(yapıldı)
 -  [X] Admin ekleme sayfası eklenmeli (eklendi)
+- [ ] admin ve writer hashli olan şifresini değiştirebilmeli. olur mu bilmiyorum?
 -  [ ] writer tablosu ayrı mı olmalı ?
  - [ ] Kullanıcı profil sayfası eklenmeli.
  - [X] Admin kategori ekleme sayfası olmalı(eklendi)
