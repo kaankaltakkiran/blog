@@ -3,6 +3,12 @@
 $activePage = "blogAdd";
 ?>
 <?php
+//! Giriş yapan kullanıcı id'si ile blog yazarının id'si aynı değilse yetkilendirme hatası ver
+if ($_SESSION['role'] !== 1) {
+    //!Yetkilendirme hatası durumunda bir hata sayfasına yönlendir
+    header("Location: authorizationControl.php");
+    exit();
+}
 if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     require_once 'db.php';
     //!Form elemanları
