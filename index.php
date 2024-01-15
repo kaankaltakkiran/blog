@@ -90,7 +90,7 @@ date_default_timezone_set('Europe/Istanbul'); // Türkiye saat dilimine göre ta
       <?php }?>
         <div class="row justify-content-center ">
           <div class="col-6">
-        <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V2!</h1>
+        <h1 class='alert alert-primary mt-3 text-center'>Welcome My Blog V3!</h1>
         </div>
         </div>
   <!--     Header End -->

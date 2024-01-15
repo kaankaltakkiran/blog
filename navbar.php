@@ -47,12 +47,12 @@ require_once 'db.php';
 //!Hangi kategorinin seçildiğini anlamak için(chatgpt)
 $activeWriterID = isset($_GET['writerid']) ? $_GET['writerid'] : null;
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users WHERE roleuser=1";
 $SORGU = $DB->prepare($sql);
 $SORGU->execute();
 $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 
-/* var_dump($categories);
+/* var_dump($users);
 die(); */
 
 $Users = "";
@@ -79,7 +79,9 @@ foreach ($users as $user) {
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Profile</a></li>
+            <?php if ($_SESSION['role'] == 1) {?>
             <li><a class="dropdown-item  <?=($activePage == 'blogAdd') ? 'active' : '';?>" href="blog.add.php?idUser=<?php echo $_SESSION['id'] ?>">Add Blog</a></li>
+            <?php }?>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
           </ul>
