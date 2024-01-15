@@ -33,11 +33,10 @@ if (isset($_POST['submit'])) {
     }
     //! Boş alan yoksa
     else {
-        //! Post edilen verileri değişkenlere atama
+        //! Kullanıcıdan mevcut şifreyisini ve yeni şifresini al
         $oldPassword = $_POST['form_oldpassword'];
         $newPassword = $_POST['form_newpassword'];
-        //! SQL hazırlama ve çalıştırma
-        //! formdan gelen email ile db de varsa
+        //! İlgili kullanıcıyı db den çek
         $id = $_SESSION['id'];
         $sql = "SELECT * FROM users  WHERE userid = :id";
         $SORGU = $DB->prepare($sql);
@@ -55,9 +54,13 @@ if (isset($_POST['submit'])) {
             //! Kullanıcının şifresini doğrulama
             //? posttan gelen ile db den gelen karşılaştırma
             //? password_verify() fonksiyonu ile
+            //!Hashkenmiş eski şifre
             $hashedOldPassword = $CEVAP[0]['userpassword'];
+            //!Kullanıcıdan alınan eski şifre ile db deki hashlenmiş eski şifre karşılaştırılır.
+            //!Eşleşiyorsa yeni şifre hashlenir ve db ye kaydedilir.
             if (password_verify($oldPassword, $hashedOldPassword)) {
                 //return true;
+                //!Kullanıcanın yeni şifresi hashlenir ve db ye kaydedilir.
                 $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
                 $id = $_SESSION['id'];
                 $sql = "UPDATE users SET userpassword	 = '$hashedNewPassword' WHERE userid = :id";
