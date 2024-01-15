@@ -35,6 +35,7 @@ $users = $SORGU->fetchAll(PDO::FETCH_ASSOC);
   <?php if ($_SESSION['role'] == 2) {?>
  <p class="text-center mt-3"> <a href="add.admin.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Admin User</a></p>
  <p class="text-center mt-3"> <a href="add.writer.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Writer User</a></p>
+ <p class="text-center mt-3"> <a href="add.category.php?idUser=<?php echo $users[0]['userid'] ?>" class="btn btn-primary">Add Blog Category</a></p>
         <?php }?>
 
       <?php if ($_SESSION['isLogin'] == 1) {?>
