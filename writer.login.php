@@ -89,7 +89,7 @@ if (isset($_POST['form_email'])) {
   <div class="col-6">
 
 <form method="POST">
-<h1 class="alert alert-info text-center">Admin Login Page</h1>
+<h1 class="alert alert-info text-center">Writer Login Page</h1>
 <?php
 //! Hata mesajlarını göster
 if (!empty($errors)) {
@@ -131,8 +131,13 @@ if (!empty($errors)) {
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>admin@gmail.com</td>
-      <td>admin</td>
+      <td>ahmet@gmail.com</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>kaan_fb_aslan@hotmail.com</td>
+      <td>123</td>
     </tr>
   </tbody>
 </table>
