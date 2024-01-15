@@ -24,6 +24,7 @@ Php ile blog sayfası
  ## Proje eksikleri
  - [ ] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı.
 -  [X] Admin ekleme sayfası eklenmeli (eklendi)
+-  [ ] writer tablosu ayrı mı olmalı ?
  - [ ] Kullanıcı profil sayfası eklenmeli.
  - [ ] Admin kategori ekleme sayfası olmalı
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
