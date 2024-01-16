@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog Update</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   <body>
     <?php include 'navbar.php';?>
@@ -35,6 +36,23 @@ $isPublis = $blog['ispublish'];
 /* echo "<pre>";
 print_r($blogs);
 die(); */
+//!Eğer blog silme isteği gelirse silme işlemini yap ve tekrardan yazar sayfasına yönlendir.
+if (isset($_GET['remove'])) {
+    require 'db.php';
+    $remove_id = $_GET['remove'];
+    $id = $_SESSION['id'];
+
+    $sql = "DELETE FROM blogs WHERE blogid = :remove";
+    $SORGU = $DB->prepare($sql);
+
+    $SORGU->bindParam(':remove', $remove_id);
+
+    $SORGU->execute();
+    echo "<script>
+  alert('The blog has been deleted. You are redirected to the Writer page...!');
+  window.location.href = 'blog.writer.php?writerid={$id}';
+  </script>";
+}
 //! Giriş yapan kullanıcı id'si ile blog yazarının id'si aynı değilse yetkilendirme hatası ver
 if ($_SESSION['id'] !== $blog['writerid']) {
     //!Yetkilendirme hatası durumunda bir hata sayfasına yönlendir
@@ -111,6 +129,7 @@ if (isset($_POST['form_submit'])) {
         echo 'window.location.href = "blog.update.php?blogid=' . $blog['blogid'] . '";';
         echo '</script>';
     }
+
 }
 
 ?>
@@ -197,7 +216,30 @@ foreach ($categories as $category) {
 
                   <button type="submit" name="form_submit" class="btn btn-primary mb-3">Update Blog</button>
      </form>
+     <!-- Modal  Start-->
+     <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+       <div class='modal-dialog'>
+         <div class='modal-content'>
+           <div class='modal-header'>
+             <h1 class='modal-title fs-5' id='exampleModalLabel'>Delete <?php echo $blog['title']; ?>? </h1>
+             <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+           </div>
+           <div class='modal-body'>
+           <?php echo $_SESSION['userName'] ?>, Are you sure you want to delete the blog?
+           </div>
+           <div class='modal-footer'>
+             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+             <a href='blog.writer.php?remove=<?php echo $blog['blogid'] ?>' class='btn btn-danger'>Delete Blog </a>
+           </div>
+         </div>
+       </div>
      </div>
+ <!-- Modal End -->
+     <p class='text-end '><a href='blog.update.php?remove=<?php echo $blog['blogid'] ?>' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Delete Blog
+   <i class='bi bi-trash'></i>
+   </a></p>
+     </div>
+
 </div>
 
 </div>
