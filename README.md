@@ -1,6 +1,10 @@
 # Blog Uygulaması
  ## Proje  öyküsü
-Php ile blog sayfası
+ Php ile hazırlanmış bir blog sitesidir. Kullanıcılar isterse anasayfada ki tüm blogları görüp istediği bloğu seçip okuyabilir ya da navbar da yer alan kategori seçeneğine göre veya yazar isminie göre seçim yapabilir.
+
+Admin yetkisindeki kişi siteye **admin** ekleyebilir, **yazar** ekleyebilir ve blog **kategori türü** ekleyebilir.
+
+Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenleyebilir**.
 
  ## Proje nasıl kullanılır?
 - [ ] Proje clone edilir.
@@ -9,6 +13,10 @@ Php ile blog sayfası
 - [X] Kullanıma hazır.
       
    > **Note:**  Bu web sitesini, bu dosyadaki **kullanıcı giriş bilgileriyle**  veya **kendiniz oluşturduğunuz hesap bilgileri**  ile kullanabilirsiniz.
+   
+   > **Note:**  Sayfada blog ekleme kısmı  giriş yaptıktan sonra navbarda yer alan  örneğin **hello kaan**  yazan dropdown list altında yer alan **add blog** bölümündedir.
+
+   > **Note:**  Sayfada profile  kısmı  giriş yaptıktan sonra navbarda yer alan  örneğin **hello kaan**  yazan dropdown list altında yer alan **profile** bölümündedir.
 
  ## Kullanıcı Bilgileri
  
@@ -20,6 +28,8 @@ Php ile blog sayfası
 |User Kaan          |`kaan_fb_aslan@hotmail.com`  |`123`
 
  > **Note:** /admin yazarak admin login sayfasına ulaşabilirsiniz.
+
+  > **Note:** /writer yazarak writer login sayfasına ulaşabilirsiniz.
 
  ## Proje eksikleri
  - [X] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı(yapıldı)
@@ -37,6 +47,10 @@ Php ile blog sayfası
  - [X] Writer ve kullanıcı blog görme durumları yapılmalı.(Yapıldı) 
 
  ## Yapılan Temel Geliştirmeler
+ - [X] Admin, /admin yazarak admin login sayfasına gider ve login olur. Login olduktan sonra kendisinin yapabileceği yetkileri görür.
+ - [ ] Eğer rolü olmayan ve rolü dışında adminin yaptığı işlemlere erişmeye çalışırsa yetkilendirme hatası meydana geliyor.
+ - [ ] Yazar blog ekledikten sonra kendi yazarlar sekmesine gelerek kendi bloğunu düzenleyebilir. Her yazar kendi bloğunu düzenler. Başkasının bloğunu düzenlemeye çalışırsa hata alır.
+ - [ ] Adminler veya yazar profile sekmesinden şifrelerini değiştirebilirler.
 - [X] Admin email ve şifre ile giriş yapıp sitye blog ekleyebilir.
 - [X] Admin blog eklediyse ve giriş yaptıysa blogunu düzenleyebilir.
 - [X] Eğer blog update kısmında url den id değiştirilirse hata verir.
