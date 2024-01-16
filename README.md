@@ -32,31 +32,25 @@ Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenl
   > **Note:** /writer yazarak writer login sayfasına ulaşabilirsiniz.
 
  ## Proje eksikleri
- - [X] Şuan admin blog ekliyor sitye. Yazar kullanıcısı blog eklemeli ve kontrol yapılmalı(yapıldı)
--  [X] Admin ekleme sayfası eklenmeli (eklendi)
-- [X] admin ve writer hashli olan şifresini değiştirebilmeli. olur mu bilmiyorum?(Oldu)
--  [ ] writer tablosu ayrı mı olmalı ?
- - [ ] Kullanıcı profil sayfası eklenmeli.
- - [X] Admin kategori ekleme sayfası olmalı(eklendi)
+-  [ ] writer tablosu ile users tablosu ayrı mı olmalı ?
+ - [X] Kullanıcı profil sayfası eklenmeli.(Eklendi fakat sadece şuan şifre değiştirme ekranı var.)
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
  - [ ] Tekil blog sayfasındaki tasarım gözden geçirilmeli(yan taraflar çok boş kaldı).
- - [X] Blog arama eklenmeli.(blog başlığa göre arama eklendi)
- - [X] Public adında checkbox olmalı checkbox işaretli ise blog yayınlanmalı.(Yapıldı)
- - [X] Date e göre blog yayınlama işlemi olmalı.(Yapıldı)
- - [X] Writer ve kullanıcı blog görme durumları yapılmalı.(Yapıldı) 
 
  ## Yapılan Temel Geliştirmeler
- - [X] Admin, /admin yazarak admin login sayfasına gider ve login olur. Login olduktan sonra kendisinin yapabileceği yetkileri görür.
- - [ ] Eğer rolü olmayan ve rolü dışında adminin yaptığı işlemlere erişmeye çalışırsa yetkilendirme hatası meydana geliyor.
- - [ ] Yazar blog ekledikten sonra kendi yazarlar sekmesine gelerek kendi bloğunu düzenleyebilir. Her yazar kendi bloğunu düzenler. Başkasının bloğunu düzenlemeye çalışırsa hata alır.
- - [ ] Adminler veya yazar profile sekmesinden şifrelerini değiştirebilirler.
-- [X] Admin email ve şifre ile giriş yapıp sitye blog ekleyebilir.
-- [X] Admin blog eklediyse ve giriş yaptıysa blogunu düzenleyebilir.
-- [X] Eğer blog update kısmında url den id değiştirilirse hata verir.
-- [X] Eğer blog kategorilerinde ve blog sahiplerinde blog yoksa alert mesajı verir.
-- [X] Admin kendi blog sayfasında en son aktif olduğu zamanı görüyor.
-- [X] Navbar menüde aktif link eklendi.
+ - [X] **Admin**, /admin yazarak admin login sayfasına gider ve login olur. Login olduktan sonra kendisinin yapabileceği işlemleri görür.
+ - [X] Eğer rolü olmayan ve rolü dışında adminin yaptığı işlemlere erişmeye çalışırsa **yetkilendirme hatası**  meydana geliyor.
+ - [X] **Yazar**, /writer yazarak writer login sayfasına gider ve login olur. Login olduktan sonra kendisinin yapabileceği işlemleri görür.
+ - [X] **Yazar**, blog ekledikten sonra kendi yazarlar sekmesine gelerek kendi bloğunu düzenleyebilir. Her yazar kendi bloğunu düzenler. Başkasının bloğunu düzenlemeye çalışırsa hata alır.
+ - [X] **Yazar**, blog eklerken eğer **Publish My Blog** seçeneğini seçmezse bloğu yayınlanmaz.
+ - [X] **Yazar**, tüm bloglarını görebilirken kullanıcılar ise sadece görmesi gereken blogları görmektedir.
+ - [X] Yazar, blog eklerken seçtiği tarihler günümüz tarihleri arasında değilse yayınlamz
+ - [X] Eğer yazarın içeriği yoksa uyarı mesajı ile karşılaşır ve o boş sayfaya yönlenmez.
+ - [X] Navbar kısmında blog başlığına göre arama sonucu getiren **blog arama bölümü**  bulunmaktadır.
+ - [X] Adminler veya yazar profile sekmesinden **şifrelerini değiştirebilirler** .
+ - [X] Yazar, kendi blog sayfasında en son aktif olduğu zamanı görür ve sonrasında güncellenir.
+
 
 
 
