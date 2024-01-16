@@ -127,7 +127,7 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
     //!Silmek için oluşturlan bootstrap modal yapısı
     echo "
      <!-- Modal -->
-     <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+     <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
        <div class='modal-dialog'>
          <div class='modal-content'>
            <div class='modal-header'>
@@ -146,7 +146,7 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
      </div>
      ";
     echo "
-   <p class='text-end '><a href='blog.writer.php?delete_all={$blogs[0]['userid']}' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete All My Blogs
+   <p class='text-end '><a href='blog.writer.php?delete_all={$blogs[0]['userid']}' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Delete All My Blogs
    <i class='bi bi-trash'></i>
    </a></p>
 ";
