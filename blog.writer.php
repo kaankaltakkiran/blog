@@ -38,6 +38,19 @@ if (isset($_GET['remove'])) {
     window.location.href = 'blog.writer.php?writerid={$id}';
     </script>";
 }
+//!Toplu silme işlemi
+if (isset($_GET['delete_all'])) {
+    require 'db.php';
+    $id = $_SESSION['id'];
+    $sql = "DELETE FROM blogs WHERE writerid =:id ";
+    $SORGU = $DB->prepare($sql);
+    $SORGU->bindParam(':id', $id);
+    $SORGU->execute();
+    echo "<script>
+    alert('The blog has been deleted. You are redirected to the Index page...!');
+    window.location.href = 'index.php';
+    </script>";
+}
 //! Kontrol: Eğer kayıt yoksa hata sayfasına yönlendir
 if (empty($blogs)) {
     echo "<script>
@@ -103,13 +116,42 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
             }
         }
     }
-    echo "</p>";
+    echo "</h5>";
+
 }
 ?>
         </div>
-
         </div>
-  <!--     Header End -->
+        <?php
+if ($_SESSION['id'] == $blogs[0]['userid']) {
+    //!Silmek için oluşturlan bootstrap modal yapısı
+    echo "
+     <!-- Modal -->
+     <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+       <div class='modal-dialog'>
+         <div class='modal-content'>
+           <div class='modal-header'>
+             <h1 class='modal-title fs-5' id='exampleModalLabel'>Delete All Blogs? </h1>
+             <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+           </div>
+           <div class='modal-body'>
+           {$_SESSION['userName']}, Are You Sure You Want to Delete All Blogs?
+           </div>
+           <div class='modal-footer'>
+             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+             <a href='blog.writer.php?delete_all={$blogs[0]['userid']}' class='btn btn-danger'>Delete All Blogs </a>
+           </div>
+         </div>
+       </div>
+     </div>
+     ";
+    echo "
+   <p class='text-end '><a href='blog.writer.php?delete_all={$blogs[0]['userid']}' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete All My Blogs
+   <i class='bi bi-trash'></i>
+   </a></p>
+";
+}
+?>
 
     <?php
 //!publish olsun denen ve tarihleri uygun olan blogları getir
