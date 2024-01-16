@@ -63,7 +63,8 @@ if (isset($_POST['form_submit'])) {
     $old_img_name = $blog['blogimage'];
 
     if ($error === 0) {
-        if ($img_size > 5242880) {
+        //!Resim boyutlarını gözden geçir
+        if ($img_size < 0) {
             $errors[] = "Sorry, your file is too large.";
         } else {
             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -162,7 +163,7 @@ foreach ($categories as $category) {
 <div class="form-floating mb-3">
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Start Publish Date</label>
-  <input type="date" name="form_startdate" value="<?php echo $blog['startdate']; ?>" class="form-control" id="exampleFormControlInput1"  min="<?php echo date('Y-m-d'); ?>" />
+  <input type="date" name="form_startdate" value="<?php echo $blog['startdate']; ?>" class="form-control" id="exampleFormControlInput1"  />
 </div>
 </div>
 <div class="form-floating mb-3">
