@@ -90,12 +90,13 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
 
         </div>
   <!--     Header End -->
-    <div class="row">
+
     <?php
 //!publish olsun denen ve tarihleri uygun olan blogları getir
 foreach ($blogs as $blog) {
     if ($blog['ispublish'] == 1 && strtotime($blog['startdate']) <= time() && strtotime($blog['lastdate']) >= time()) {
         echo "
+        <div class='row'>
       <div class='col-6'>
           <div class='card mb-4 shadow-sm'>
               <a href='blog.show.php?blogid={$blog["blogid"]}'>

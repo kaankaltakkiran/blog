@@ -181,7 +181,7 @@ foreach ($categories as $category) {
 </div>
 <div class="mb-3">
 <div class="form-check form-switch">
-  <input class="form-check-input" value="0" name='form_ispublish' type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+  <input class="form-check-input"  name='form_ispublish' type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
   <label class="form-check-label" for="flexSwitchCheckChecked">Publish My Blog</label>
 </div>
 </div>

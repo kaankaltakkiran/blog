@@ -31,6 +31,7 @@ $SORGU->execute();
 
 $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 $blog = $blogs[0];
+$isPublis = $blog['ispublish'];
 /* echo "<pre>";
 print_r($blogs);
 die(); */
@@ -48,6 +49,8 @@ if (isset($_POST['form_submit'])) {
     $summary = $_POST['form_summary'];
     $blogStartDate = $_POST['form_startdate'];
     $blogLastDate = $_POST['form_lastdate'];
+    //?checkbox işaretli ise 1 değilse 0
+    $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
     $content = $_POST['form_content'];
 
     $id = $_GET['blogid'];
@@ -80,14 +83,14 @@ if (isset($_POST['form_submit'])) {
                 //?unlink dosya silmek için kullanılır
                 unlink('images/' . $old_img_name);
                 //!Foto güncellediyse veritabanına yeni fotoğraf adını kaydet
-                $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,content=:form_content, blogimage = '$new_img_name' WHERE blogid = :blogid";
+                $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,ispublish=:form_ispublish,content=:form_content, blogimage = '$new_img_name' WHERE blogid = :blogid";
             } else {
                 $errors[] = "You can't upload files of this type";
             }
         }
     } else {
         //!Foto güncellemediysen eski fotoğrafı kullan
-        $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,content=:form_content WHERE blogid = :blogid";
+        $sql = "UPDATE blogs SET title = :form_title, categoryid	 = :form_category, summary=:form_summary,startdate=:form_startdate,lastdate=:form_lastdate,ispublish=:form_ispublish,content=:form_content WHERE blogid = :blogid";
     }
     //! Hata yoksa veritabanına kaydet
     if (empty($errors)) {
@@ -98,6 +101,7 @@ if (isset($_POST['form_submit'])) {
         $SORGU->bindParam(':form_summary', $summary);
         $SORGU->bindParam(':form_startdate', $blogStartDate);
         $SORGU->bindParam(':form_lastdate', $blogLastDate);
+        $SORGU->bindParam(':form_ispublish', $isPublish);
         $SORGU->bindParam(':form_content', $content);
 
         $SORGU->bindParam(':blogid', $id);
@@ -170,6 +174,12 @@ foreach ($categories as $category) {
 <div class="mb-3">
   <label for="exampleFormControlInput2" class="form-label">Last Published Date</label>
   <input type="date" name="form_lastdate" value="<?php echo $blog['lastdate']; ?>" class="form-control" id="exampleFormControlInput2"  min="<?php echo date('Y-m-d'); ?>" />
+</div>
+<div class="mb-3">
+<div class="form-check form-switch">
+  <input class="form-check-input" <?php echo ($isPublis == 1) ? 'checked' : ''; ?>  name='form_ispublish' type="checkbox" role="switch" id="flexSwitchCheckChecked">
+  <label class="form-check-label" for="flexSwitchCheckChecked">Publish My Blog</label>
+</div>
 </div>
 </div>
 <div class="mb-3">
