@@ -33,6 +33,7 @@ Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenl
 
  ## Proje eksikleri
 -  [ ] writer tablosu ile users tablosu ayrı mı olmalı ?
+-  [ ] Yazar istediği bloğu silmeli.
  - [X] Kullanıcı profil sayfası eklenmeli.(Eklendi fakat sadece şuan şifre değiştirme ekranı var.)
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
@@ -45,7 +46,7 @@ Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenl
  - [X] **Yazar**, blog ekledikten sonra kendi yazarlar sekmesine gelerek kendi bloğunu düzenleyebilir. Her yazar kendi bloğunu düzenler. Başkasının bloğunu düzenlemeye çalışırsa hata alır.
  - [X] **Yazar**, blog eklerken eğer **Publish My Blog** seçeneğini seçmezse bloğu yayınlanmaz.
  - [X] **Yazar**, tüm bloglarını görebilirken kullanıcılar ise sadece görmesi gereken blogları görmektedir.
- - [X] Yazar, blog eklerken seçtiği tarihler günümüz tarihleri arasında değilse yayınlamz
+ - [X] Yazar, blog eklerken seçtiği tarihler günümüz tarihleri arasında değilse yayınlanmaz
  - [X] Eğer yazarın içeriği yoksa uyarı mesajı ile karşılaşır ve o boş sayfaya yönlenmez.
  - [X] Navbar kısmında blog başlığına göre arama sonucu getiren **blog arama bölümü**  bulunmaktadır.
  - [X] Adminler veya yazar profile sekmesinden **şifrelerini değiştirebilirler** .
