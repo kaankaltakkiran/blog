@@ -33,7 +33,7 @@ Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenl
 
  ## Proje eksikleri
 -  [ ] writer tablosu ile users tablosu ayrı mı olmalı ?
--  [ ] Yazar istediği bloğu silmeli.
+-  [X] Yazar istediği bloğu silmeli.(Tekil silme var toplu silme ? yada başka sayfalarda)
  - [X] Kullanıcı profil sayfası eklenmeli.(Eklendi fakat sadece şuan şifre değiştirme ekranı var.)
  - [ ] Sayfanın frontend tasırımı sürdürülebilir yapıda değil. Yeniden tasarlanmalı çünkü bloglar eklendikçe blogların olduğu bölümde bloglar ve kategoriler uyumlu gözükmemektedir.
  - [ ] Genel olarak resim boyutları gözden geçirilebilir.
