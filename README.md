@@ -27,9 +27,9 @@ Writer yetkisindeki kişi ise blog **ekleyebilir** ve eklediği bloğu **düzenl
 |User Ahmet          |`ahmet@gmail.com`            |`123`           |
 |User Kaan          |`kaan_fb_aslan@hotmail.com`  |`123`
 
- > **Note:** /admin yazarak admin login sayfasına ulaşabilirsiniz.
+ > **Note:** url kısmına /admin yazarak admin login sayfasına ulaşabilirsiniz.
 
-  > **Note:** /writer yazarak writer login sayfasına ulaşabilirsiniz.
+  > **Note:** url kısmına /writer yazarak writer login sayfasına ulaşabilirsiniz.
 
  ## Proje eksikleri
 -  [ ] writer tablosu ile users tablosu ayrı mı olmalı ?
