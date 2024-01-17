@@ -122,6 +122,7 @@ if ($_SESSION['id'] == $blogs[0]['userid']) {
 ?>
         </div>
         </div>
+        <div class="row">
         <?php
 if ($_SESSION['id'] == $blogs[0]['userid']) {
     //!Silmek için oluşturlan bootstrap modal yapısı
@@ -181,7 +182,6 @@ foreach ($blogs as $blog) {
      ";
     if ($blog['ispublish'] == 1 && strtotime($blog['startdate']) <= time() && strtotime($blog['lastdate']) >= time()) {
         echo "
-        <div class='row'>
       <div class='col-6'>
           <div class='card mb-4 shadow-sm'>
               <a href='blog.show.php?blogid={$blog["blogid"]}'>
@@ -251,15 +251,12 @@ foreach ($blogs as $blog) {
                   </div>
               </div>
           </div>
-      </div>
-  </div>";
+      </div>";
     }
 }
-
-;
 ?>
 
-    </div>
+</div>
   </div>
       <?php include 'footer.php';?>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
