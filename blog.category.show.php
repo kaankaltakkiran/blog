@@ -73,7 +73,8 @@ foreach ($categoryies as $category) {
          <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
          <a href='blog.writer.php?writerid={$category["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$category['username']}</a>
          <br>
-         <span style='color: DimGray;'>Category:</span> {$category['categoryname']}
+         <span style='color: DimGray;'>Category:</span>
+          <a href='blog.category.show.php?categoryid={$category["categoryid"]}' class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{$category['categoryname']}</a>
      </div>
        </div>
      </div>
