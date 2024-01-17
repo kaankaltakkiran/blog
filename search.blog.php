@@ -38,9 +38,9 @@ if (empty($search_word)) {
 
     $SORGU->execute();
 
-    $results = $SORGU->fetchAll(PDO::FETCH_ASSOC);
-    /*    var_dump($results);
-    echo "Gelen cevap " . count($results) . " adet satırdan oluşuyor";
+    $blogs = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+    /*    var_dump($blogs);
+    echo "Gelen cevap " . count($blogs) . " adet satırdan oluşuyor";
     die(); */
     ?>
  <!--     Bloglar Start -->
@@ -50,21 +50,22 @@ if (empty($search_word)) {
           <div class="col-12 border ">
 <?php
 // Sonuçları listele
-    if (count($results) > 0) {
-        foreach ($results as $result) {
+    if (count($blogs) > 0) {
+        foreach ($blogs as $blog) {
             echo "
           <div class='row mt-3 '>
               <div class='col-4'>
-              <a href='blog.show.php?blogid={$result["blogid"]}'>  <img src='images/{$result['blogimage']}' class='card-img-top' alt='Blog Image'></a>
+              <a href='blog.show.php?blogid={$blog["blogid"]}'>  <img src='images/{$blog['blogimage']}' class='card-img-top' alt='Blog Image'></a>
               </div>
               <div class='col-8'>
-              <h3>{$result['title']} <span class='text-danger  fs-6' style='float: right;'>{$result['startdate']}</span></h3>
-              <p>{$result['summary']}</p>
-              <a href='blog.show.php?blogid={$result["blogid"]}' class='btn btn-outline-info'>Read More...</a>
+              <h3>{$blog['title']} <span class='text-danger  fs-6' style='float: right;'>{$blog['startdate']}</span></h3>
+              <p>{$blog['summary']}</p>
+              <a href='blog.show.php?blogid={$blog["blogid"]}' class='btn btn-outline-info'>Read More...</a>
               <div style='float: right;'><span style='color: DimGray;'>Writer:</span>
-              <a href='blog.writer.php?writerid={$result["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$result['username']}</a>
+              <a href='blog.writer.php?writerid={$blog["userid"]}' class='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>{$blog['username']}</a>
               <br>
-              <span style='color: DimGray;'>Category:</span> {$result['categoryname']}
+              <span style='color: DimGray;'>Category:</span>
+              <a href='blog.category.show.php?categoryid={$blog["categoryid"]}' class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{$blog['categoryname']}</a>
           </div>
 
               </div>
