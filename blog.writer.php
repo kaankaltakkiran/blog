@@ -227,7 +227,10 @@ foreach ($blogs as $blog) {
               </a>
               <div class='card-body'>
                   <p class='card-text'>
-                      <h3>{$blog['title']}</h3>
+
+                      <h3>{$blog['title']}
+                      <span style='float: right;' class='badge bg-danger'>Not Published!!!</span>
+                      </h3>
                       <p>{$blog['summary']}</p>
                   </p>
                   <div class='d-flex justify-content-between align-items-center'>
