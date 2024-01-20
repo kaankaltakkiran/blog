@@ -1,1 +1,0 @@
-update veya ekeleme yaparken aynı emailden kişi varsa ekleme veya update yapaamsın
