@@ -10,17 +10,19 @@ if (empty($_SESSION['role']) || $_SESSION['role'] != 1) {
 }
 if (isset($_POST['submit']) && isset($_FILES['form_image'])) {
     require_once 'db.php';
-    //!Form elemanları
+    //!htmlspecialchars() kullanıcıdan alınan veriyi güvenli hale getirir
+    //! eğer kullanıcı zararlı bir kod gönderirse bunu html etiketlerine dönüştürür
+    //?Form elemanları
     $writerId = $_SESSION['id'];
-    $title = $_POST['form_title'];
+    $title = htmlspecialchars($_POST['form_title']);
     $categoryId = $_POST['form_category'];
-    $summary = $_POST['form_summary'];
+    $summary = htmlspecialchars($_POST['form_summary']);
     $blogStartDate = $_POST['form_startdate'];
     $blogLastDate = $_POST['form_lastdate'];
 //!Checkbox değeri kontrolü
     //?checkbox işaretli ise 1 değilse 0
     $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
-    $content = $_POST['form_content'];
+    $content = htmlspecialchars($_POST['form_content']);
     //!Resim yükleme
     $img_name = $_FILES['form_image']['name'];
     $img_size = $_FILES['form_image']['size'];

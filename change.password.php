@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
             //! Kullanıcının şifresini doğrulama
             //? posttan gelen ile db den gelen karşılaştırma
             //? password_verify() fonksiyonu ile
-            //!Hashkenmiş eski şifre
+            //!Hashlenmiş eski şifre
             $hashedOldPassword = $CEVAP[0]['userpassword'];
             //!Kullanıcıdan alınan eski şifre ile db deki hashlenmiş eski şifre karşılaştırılır.
             //!Eşleşiyorsa yeni şifre hashlenir ve db ye kaydedilir.

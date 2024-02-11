@@ -20,10 +20,11 @@ if (empty($_SESSION['role']) || $_SESSION['role'] != 2) {
 if (isset($_POST['submit'])) {
     //!Hata mesajlarını göstermek için boş bir dizi
     $errors = array();
-
     require_once 'db.php';
-    $categoryName = $_POST['form_categoryname'];
-
+    //!htmlspecialchars()kullanıcıdan alınan veriyi güvenli hale getirir
+    //! eğer kullanıcı zararlı bir kod gönderirse bunu html etiketlerine dönüştürür
+    //?Form elemanları
+    $categoryName = htmlspecialchars($_POST['form_categoryname']);
     //?Category var mı yok mu kontrol etme
     $sql = "SELECT * FROM categories WHERE categoryname = :form_categoryname";
     $SORGU = $DB->prepare($sql);

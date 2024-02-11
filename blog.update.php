@@ -60,16 +60,17 @@ if ($_SESSION['id'] !== $blog['writerid']) {
     exit();
 }
 if (isset($_POST['form_submit'])) {
-
-    //!Form elemanları
-    $title = $_POST['form_title'];
+    //!htmlspecialchars() kullanıcıdan alınan veriyi güvenli hale getirir
+    //! eğer kullanıcı zararlı bir kod gönderirse bunu html etiketlerine dönüştürür
+    //?Form elemanları
+    $title = htmlspecialchars($_POST['form_title']);
     $categoryId = $_POST['form_category'];
-    $summary = $_POST['form_summary'];
+    $summary = htmlspecialchars($_POST['form_summary']);
     $blogStartDate = $_POST['form_startdate'];
     $blogLastDate = $_POST['form_lastdate'];
     //?checkbox işaretli ise 1 değilse 0
     $isPublish = isset($_POST['form_ispublish']) ? 1 : 0;
-    $content = $_POST['form_content'];
+    $content = htmlspecialchars($_POST['form_content']);
 
     $id = $_GET['blogid'];
 

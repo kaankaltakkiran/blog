@@ -20,10 +20,12 @@ if (empty($_SESSION['role']) || $_SESSION['role'] != 2) {
 if (isset($_POST['submit'])) {
     //!Hata mesajlarını göstermek için boş bir dizi
     $errors = array();
-
     require_once 'db.php';
-    $name = $_POST['form_username'];
-    $email = $_POST['form_email'];
+    //!htmlspecialchars() kullanıcıdan alınan veriyi güvenli hale getirir
+    //! eğer kullanıcı zararlı bir kod gönderirse bunu html etiketlerine dönüştürür
+    //?Form elemanları
+    $name = htmlspecialchars($_POST['form_username']);
+    $email = htmlspecialchars($_POST['form_email']);
     $gender = $_POST['form_gender'];
     $password = $_POST['form_password'];
 /*  Şifrele hashleme */
@@ -38,7 +40,7 @@ if (isset($_POST['submit'])) {
     /*  echo '<pre>';
     print_r($isUser);
     die(); */
-    //!Eğer kullanıc üye olmuşsa  hata ver
+    //!Eğer kullanıcı üye olmuşsa  hata ver
     if ($isUser) {
         $errors[] = "This email is already registered";
 
