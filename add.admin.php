@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
     $name = htmlspecialchars($_POST['form_username']);
     $email = htmlspecialchars($_POST['form_email']);
     $gender = $_POST['form_gender'];
+    $rePassword = $_POST['form_repassword'];
     $password = $_POST['form_password'];
 /*  Şifrele hashleme */
     $password = password_hash($password, PASSWORD_DEFAULT);
@@ -45,6 +46,8 @@ if (isset($_POST['submit'])) {
         $errors[] = "This email is already registered";
 
         //!Eğer kullanıcı yoksa kaydet
+    } else if ($rePassword != $password) {
+        $errors[] = "Passwords do not match";
     } else {
         $sql = "INSERT INTO users (username,useremail,usergender,roleuser,userpassword) VALUES (:form_username,:form_email,:form_gender,2,'$password')";
         $SORGU = $DB->prepare($sql);
@@ -100,6 +103,10 @@ if (!empty($errors)) {
 <div class="input-group mb-3  input-group-lg">
   <input type="password"  name="form_password" class="form-control" id="password" placeholder="Password"required>
   <span class="input-group-text bg-transparent"><i id="togglePassword" class="bi bi-eye-slash"></i></span>
+</div>
+<div class="input-group mb-3  input-group-lg">
+  <input type="password"  name="form_repassword" class="form-control" id="password2" placeholder="Please Enter Your Password Again"required>
+  <span class="input-group-text bg-transparent"><i id="togglePassword2" class="bi bi-eye-slash"></i></span>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="form_gender" value="M" required >
