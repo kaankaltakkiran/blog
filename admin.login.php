@@ -78,7 +78,7 @@ if (isset($_POST['form_email'])) {
             }
         } else {
             //! Kullanıcı yoksa
-            $errors[] = "INCORRECT EMAIL OR PASSWORD!...";
+            $errors[] = "There Is No Such User !";
         }
     }
 
