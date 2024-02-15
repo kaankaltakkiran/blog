@@ -82,6 +82,7 @@ foreach ($users as $user) {
             <?php if ($_SESSION['role'] == 1) {?>
             <li><a class="dropdown-item  <?=($activePage == 'blogAdd') ? 'active' : '';?>" href="blog.add.php?idUser=<?php echo $_SESSION['id'] ?>">Add Blog</a></li>
             <?php }?>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password <i class="bi bi-arrow-repeat"></i></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
           </ul>
@@ -95,3 +96,100 @@ foreach ($users as $user) {
     </div>
   </div>
 </nav>
+<?php
+//!form_email post edilmişse
+if (isset($_POST['form_submit'])) {
+    $errors = array();
+    require 'db.php';
+    //! Post edilen verileri değişkenlere atama
+    $oldPassword = $_POST['form_oldpassword'];
+    $olRePassword = $_POST['form_repassword'];
+    $newPassword = $_POST['form_newpassword'];
+
+    // Form gönderildi
+    // 1.DB'na bağlan
+    // 2.SQL hazırla ve çalıştır
+    // 3.Gelen sonuç 1 satırsa GİRİŞ BAŞARILI değilse, BAŞARISIZ
+    //! Eğer boş alan varsa uyarı mesajı
+    if (empty($_POST["form_oldpassword"]) || empty($_POST["form_newpassword"])) {
+        $errors[] = "Both Fields are required !";
+    } else if ($_POST['form_oldpassword'] != $_POST['form_repassword']) {
+        $errors[] = "Passwords Do Not Match!";
+    }
+    //! Boş alan yoksa
+    else {
+        //! SQL hazırlama ve çalıştırma
+        //! formdan gelen email ile db de varsa
+        $id = $_SESSION['id'];
+        $sql = "SELECT * FROM users WHERE userid = :id";
+        $SORGU = $DB->prepare($sql);
+        $SORGU->bindParam(':id', $id);
+        $SORGU->execute();
+        $CEVAP = $SORGU->fetchAll(PDO::FETCH_ASSOC);
+
+        /*    var_dump($CEVAP);
+        echo "Gelen cevap " . count($CEVAP) . " adet satırdan oluşuyor";
+        die(); */
+        //! Gelen sonuç 1 satırsa db de kullanıcı var olduğunu anlarız
+        if (count($CEVAP) == 1) {
+            //! Kullanıcının şifresini doğrulama
+            //? posttan gelen ile db den gelen karşılaştırma
+            //? password_verify() fonksiyonu ile
+            $hashedOldPassword = $CEVAP[0]['userpassword'];
+            if (password_verify($oldPassword, $hashedOldPassword)) {
+                //return true;
+                $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                $id = $_SESSION['id'];
+                $sql = "UPDATE users SET userpassword	 = '$hashedNewPassword' WHERE userid = :id";
+                $SORGU = $DB->prepare($sql);
+                $SORGU->bindParam(':id', $id);
+                $SORGU->execute();
+                $approves[] = "Password Changed Successfully...";
+            } else {
+                //return false;
+                //!Şifreler Eşleşmiyorsa
+                $errors[] = "INCORRECT Email OR PASSWORD MATCH!...";
+
+            }
+        } else {
+            //! Kullanıcı yoksa
+            $errors[] = "There Is No Such User !.";
+        }
+    }
+
+}
+?>
+<?php
+//! Hata mesajlarını göster
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<div class='position-fixed top-0 end-0 p-3' style='z-index: 5'>
+      <div class='toast align-items-center text-white bg-danger border-0' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='5000'>
+          <div class='d-flex'>
+              <div class='toast-body'>
+              $error
+              </div>
+              <button type='button' class='btn-close btn-close-white me-2 m-auto' data-bs-dismiss='toast' aria-label='Close'></button>
+          </div>
+      </div>
+  </div>";
+    }
+}
+?>
+<?php
+//! Başarılı mesajlarını göster
+if (!empty($approves)) {
+    foreach ($approves as $approve) {
+        echo "<div class='position-fixed top-0 end-0 p-3' style='z-index: 5'>
+      <div class='toast align-items-center text-white bg-success border-0' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='5000'>
+          <div class='d-flex'>
+              <div class='toast-body'>
+              $approve
+              </div>
+              <button type='button' class='btn-close btn-close-white me-2 m-auto' data-bs-dismiss='toast' aria-label='Close'></button>
+          </div>
+      </div>
+  </div>";
+    }
+}
+?>

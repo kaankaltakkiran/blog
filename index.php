@@ -14,6 +14,7 @@ $activePage = "index";
     <body>
     <!--  Navbar için navbar.php dosyasını include ediyoruz. -->
       <?php include 'navbar.php';?>
+
   <!--     Header Start -->
       <div class="container">
       <?php if ($_SESSION['isLogin'] == 0) {?>
@@ -234,6 +235,7 @@ for ($i = 0; $i < $totalCategories; $i++) {
             <!--     Bloglar end -->
   </div>
   </div>
+    <?php require 'modal.php';?>
       <?php include 'footer.php';?>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <!-- Chatgpt ile anlık olarak saat ve gün bilgisi gösterimi -->
@@ -270,5 +272,13 @@ for ($i = 0; $i < $totalCategories; $i++) {
             updateClock();
         };
     </script>
+    <script src="./public/js/change.pass.hide.show.js"></script>
+    <script>
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+    var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl);
+    });
+    toastList.forEach(toast => toast.show());
+</script>
     </body>
   </html>
