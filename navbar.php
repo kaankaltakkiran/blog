@@ -78,7 +78,6 @@ foreach ($users as $user) {
           Hello! <?php echo $_SESSION['userName'] ?>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
             <?php if ($_SESSION['role'] == 1) {?>
             <li><a class="dropdown-item  <?=($activePage == 'blogAdd') ? 'active' : '';?>" href="blog.add.php?idUser=<?php echo $_SESSION['id'] ?>">Add Blog</a></li>
             <?php }?>
