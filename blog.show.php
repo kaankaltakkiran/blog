@@ -19,6 +19,10 @@ $blog = $SORGU->fetchAll(PDO::FETCH_ASSOC);
 /* echo '<pre>';
 print_r($blog);
 die(); */
+$sql = "UPDATE blogs SET readcount =readcount + 1  WHERE blogid=:blogid";
+$SORGU = $DB->prepare($sql);
+$SORGU->bindParam(':blogid', $id);
+$SORGU->execute();
 //!Format date
 $startDate = new DateTime($blog[0]['startdate']);
 $formattedStartDate = $startDate->format('d-m-Y');
@@ -54,6 +58,7 @@ if ($_SESSION['id'] !== $blog[0]['userid'] and (strtotime($blog[0]['startdate'])
 <br>
 <!-- nl2br boşlukları gösteriyor -->
 <p class="mt-2"><?php echo nl2br($blog[0]['content']); ?></p>
+<p class="text-center text-muted ">Read <?php echo ($blog[0]['readcount']); ?> times.</p>
        </div>
      </div>
 </div>
